@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    @apply m-0 p-0 box-border font-hind
+}
+
+body{
+    @apply bg-white flex w-screen h-screen justify-center items-center
+}
+
+a{
+    @apply no-underline text-dark-blue
+}
+
+input[type="checkbox"]:focus{
+    @apply ring-transparent
+}
+
+input[type="checkbox"]:hover{
+    @apply border-light-blue
+}
+
+input[type="checkbox"]:hover ~ .remember-label, input[type="checkbox"]:checked ~ .remember-label{
+    @apply text-light-blue
+}
+.login-box{
+    @apply relative w-[32em] rounded-lg pt-[5em] px-[2.5em] pb-[4em] items-center justify-center
+}
+
+.login-title-cont{
+    @apply absolute top-0 left-1/2 -translate-x-1/2 flex items-center justify-center h-1/5 w-fit
+}
+
+.login-title{
+    @apply text-[40px] font-bold
+}
+
+.input-box{
+    @apply relative flex flex-col my-[1.5em]
+}
+
+.input-field{
+    @apply w-full h-[3.5em] text-base border-2 border-solid border-gray-primary rounded-lg ps-[1em] pe-[1.5em] outline-none
+}
+
+.input-field:focus{
+    @apply border-light-blue
+}
+
+.input-label{
+    @apply absolute top-[1em] left-[1em] p-0 transition-all ease-in duration-300 bg-white
+}
+
+.input-field:not(:placeholder-shown) ~ .input-label{
+    @apply absolute top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-dark-primary
+}
+
+.input-field:focus ~ .input-label{
+    @apply absolute  top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-light-blue
+}
+
+.remember-forgot{
+    @apply relative flex justify-between mt-[2em] mb-[1em] text-sm
+}
+
+.remember-me{
+    @apply relative flex justify-between w-[8.5em]
+}
+
+/* input[type="checkbox"]{
+    @apply appearance-none rounded-lg w-[1.5em] h-[1.5em] border-2 border-solid border-gray-primary
+}
+
+input[type="checkbox"]:checked{
+    @apply border-2 border-solid border-light-blue bg-[url('/icon/checkmark.png')] bg-center bg-no-repeat, bg-light-blue
+} */
+
+.button-box{
+    @apply flex justify-center items-center my-[1em]
+}
+
+.dark-blue-button{
+    @apply shadow-none outline-none w-fit h-fit border-2 border-solid border-dark-blue py-[0.5em] px-[1em] bg-dark-blue rounded-lg text-light-primary text-base font-semibold
+}
+
+.dark-blue-button:hover{
+    @apply bg-transparent text-dark-blue
+}
+
+.dark-blue-button:active{
+    @apply bg-transparent border-transparent text-dark-blue
+}
+
+.signup-dir{
+    @apply flex justify-center items-center text-sm
+}
+
