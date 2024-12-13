@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* nav-bar class */
+.unselect-tab{
+    @apply text-dark-primary hover:text-light-blue transition
+}
+
+.select-tab{
+    @apply text-light-blue font-semibold border-b-2 border-light-blue transition
+}
+
