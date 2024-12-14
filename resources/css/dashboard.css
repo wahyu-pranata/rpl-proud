@@ -1,0 +1,87 @@
+table td,
+table th {
+  @apply py-2
+}
+
+table thead {
+  @apply rounded-lg overflow-hidden outline outline-red-500 
+}
+table thead tr {
+  @apply rounded-lg
+}
+
+table thead tr th {
+  @apply rounded-lg
+}
+
+.calendar-container {
+  @apply w-[400px] bg-white rounded-lg shadow-xl mt-8 border-dark-blue border-2;
+}
+
+.calendar-container header {
+  @apply flex items-center justify-between px-5 py-8;
+}
+
+.calendar-container header .calendar-navigation {
+  @apply flex;
+}
+
+.calendar-container header .calendar-navigation span {
+  @apply h-10 w-10 mx-1 cursor-pointer text-center leading-9 rounded-full select-none text-neutral-400 text-3xl;
+}
+
+.calendar-navigation span:last-child {
+  @apply -mr-4;
+}
+
+.calendar-container header .calendar-navigation span:hover {
+  @apply bg-neutral-200;
+}
+
+.calendar-container header .calendar-current-date {
+  @apply font-medium text-2xl;
+}
+
+.calendar-body {
+  @apply p-5;
+}
+
+.calendar-body ul {
+  @apply list-none flex flex-wrap text-center;
+}
+
+.calendar-body .calendar-dates {
+  @apply mb-5;
+}
+
+.calendar-body li {
+  @apply w-[calc(100%/7)] text-base text-neutral-500;
+}
+
+.calendar-body .calendar-weekdays li {
+  @apply cursor-default font-medium;
+}
+
+.calendar-body .calendar-dates li {
+  @apply mt-8 relative z-10 cursor-pointer;
+}
+
+.calendar-dates li.inactive {
+  @apply text-neutral-400;
+}
+
+.calendar-dates li.active {
+  @apply text-white;
+}
+
+.calendar-dates li::before {
+  @apply absolute content-[""] -z-10 top-1/2 left-1/2 w-10 h-10 rounded-full -translate-x-1/2 -translate-y-1/2;
+}
+
+.calendar-dates li.active::before {
+  @apply bg-dark-blue;
+}
+
+.calendar-dates li:not(.active):hover::before {
+  @apply bg-[#e4e1e1];
+}
