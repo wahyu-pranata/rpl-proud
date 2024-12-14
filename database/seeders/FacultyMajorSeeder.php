@@ -15,6 +15,7 @@ class FacultyMajorSeeder extends Seeder
     public function run(): void
     {
         Faculty::upsert([
+            ['name' => 'Any'], // Khusus tingkat universitas
             ['name' => 'Ilmu Budaya'],
             ['name' => 'Kedokteran'],
             ['name' => 'Hukum'],
@@ -28,6 +29,17 @@ class FacultyMajorSeeder extends Seeder
             ['name' => 'Pariwisata'],
             ['name' => 'Ilmu Sosial dan Ilmu Politik'],
             ['name' => 'Kelautan dan Perikanan'],
+            ['name' => 'Universitas']
+        ],
+            ['id', 'name']
+        );
+
+        // Khusus tingkat universitas
+        Major::upsert([
+            [
+                'name' => 'Any',
+                'faculty_id' => Faculty::where('name', '=', 'Any')->value('id'),
+            ],
         ],
             ['id', 'name']
         );
