@@ -10,6 +10,14 @@ Route::get('/data_mhs', function () {
     return view('data_mhs');
 });
 
+Route::get('/data_panitia', function () {
+    return view('data_panitia');
+});
+
+Route::get('/inbox', function () {
+    return view('inbox');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

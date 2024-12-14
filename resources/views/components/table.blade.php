@@ -1,4 +1,4 @@
-<div id="terdaftar-section" class="relative mt-6 h-full">
+<div id="{{ $tableID }}" class="relative mt-6 h-full">
     <div class="box-border w-full h-full bg-white rounded-lg shadow-md mb-6 overflow-hidden overflow-y-scroll">
         {{-- data table --}}
         <table class="w-full h-full box-border">

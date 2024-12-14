@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Mahasiswa</title>
+    <title>Data Panitia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     @vite('resources/css/navbar.css')
     @vite('resources/js/navbar.js')
@@ -19,7 +19,7 @@
                 ],
                 ['label' => 'Mahasiswa',
                  'icon_path' => 'M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z',
-                 'icon_class' => 'select-tab'
+                 'icon_class' => 'unselect-tab'
                 ]
             ]"
             dbtop="Organisasi Mahasiswa"
@@ -34,7 +34,7 @@
                         <svg width="23" height="23" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19.5322 25L7.46771 13.6452L19.5322 3" stroke="#1E1E1E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <div class="text-4xl font-bold">Mahasiswa</div>
+                        <div class="text-4xl font-bold">Daftar Panitia</div>
                     </a>
                     <!-- search Bar -->
                     <div class="mt-6">
@@ -50,11 +50,11 @@
                     <!-- dropdowns -->
                     <div class="mt-6">
                         <select class="w-full p-2 bg-white border rounded-lg hover:ring-1 hover:ring-black focus:ring-2 focus:ring-blue-500 transition">
-                            <option value="" class="text-gray-500">Fakultas</option>
+                            <option value="" class="text-gray-500">Bidang</option>
                             <option value="">Matematika dan Ilmu Pengetahuan Alam</option>
                         </select>
                         <select class="w-full p-2 bg-white border rounded-lg mt-4 hover:ring-1 hover:ring-black focus:ring-2 focus:ring-blue-500 transition">
-                            <option value="">Program Studi</option>
+                            <option value="">Jabatan</option>
                             <option value="">Informatika</option>
                         </select>
                     </div>
@@ -64,12 +64,9 @@
             <!-- main Content -->
             <main class="flex-1 p-6 h-[90%]">
                 <!-- navigation tabs -->
-                <div class="flex space-x-4">
-                    <a href="#" id="terdaftar-tab" class="select-tab">Terdaftar</a>
-                    <a href="#" id="pengajuan-tab" class="unselect-tab">Pengajuan</a>
-                </div>
+                <div class="text-gray-100 border-b-2 border-gray-100">.</div>
                 <!-- terdaftar content -->
-                <x-table :headers="['Nama', 'NIM', 'Program Studi', 'Organisasi', '']"
+                <x-table :headers="['Nama', 'NIM', 'Bidang', 'Jabatan', '']"
                     :rows="[
                         ['Gede Nicholas Tejasukmana Putra', '2308561074', 'Informatika', 'Student Innovation Centre'],
                         ['Bayu Fadjar Dwi Putra', '2308561080', 'Informatika', 'Free Lance'],
