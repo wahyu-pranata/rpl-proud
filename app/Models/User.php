@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -47,14 +48,13 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public function faculty(): BelongsTo
+    public function studentDetails(): HasOne
     {
-        return $this->belongsTo(Faculty::class);
+        return $this->hasOne(StudentDetails::class);
     }
-
-    public function major(): BelongsTo
+    public function organizationDetails(): HasOne
     {
-        return $this->belongsTo(Major::class);
+        return $this->hasOne(OrganizationDetails::class);
     }
     public function registrations(): HasMany
     {
