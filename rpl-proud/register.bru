@@ -1,0 +1,39 @@
+meta {
+  name: /register
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8000/register
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  name: cobauser
+  email: email@gmail.com
+  password: 
+  password_confirmation: 
+  nim: 
+  student_proof: @file()
+  phone: 
+  faculty_id: 
+  major_id: 
+}
+
+script:pre-request {
+  const cookie = bru.getVar("cookie");
+  
+  if(cookie) {
+    req.setHeader("Cookie", cookie)
+  }
+}
+
+script:post-response {
+  const cookies = res.getHeader('set-cookie');
+  
+  if(cookies) {
+    bru.setVar("cookie", cookies.join('; '));
+  }
+}
