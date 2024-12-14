@@ -38,6 +38,8 @@ class RegisteredUserController extends Controller
             'student_proof' => ['required', 'file', 'extensions:pdf'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone' => ['required'],
+            'faculty_id' => $request->faculty_id,
+            'major_id' => $request->major_id,
         ]);
 
         $user = User::create([
@@ -51,8 +53,6 @@ class RegisteredUserController extends Controller
             'nim' => $request->nim,
             'student_proof' => $request->file('student_proof')->storeAs('student_proofs', 'student_proof-' . $request->nim . '.pdf'),
             'verified_by_major' => false,
-            'faculty_id' => $request->faculty_id,
-            'major_id' => $request->major_id,
             'user_id' => $user->id,
         ]);
 
