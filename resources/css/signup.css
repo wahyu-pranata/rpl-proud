@@ -105,18 +105,9 @@ a{
     @apply transition-all ease-in h-[0.7em] pr-1 stroke-gray-primary
 }
 
-.input-field:hover ~ .dropdown-icon{
-    @apply stroke-dark-secondary
-}
-
-.input-:focus ~ .dropdown-icon{
-    @apply stroke-light-blue
-}
-
 .dropdown-icon-rotate{
     @apply -rotate-180
 }
-
 
 .options{
     @apply list-none bg-gray-secondary rounded-lg overflow-x-hidden overflow-y-auto h-fit max-h-[17.5em] absolute z-10 opacity-0 hidden transition-all
