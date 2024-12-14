@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('student_details', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained();
+        Schema::table('users', function (Blueprint $table) {
             $table->foreignId('faculty_id')->references('id')->on('faculties')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('major_id')->references('id')->on('majors')->onUpdate('cascade')->onDelete('cascade');
         });
+        Schema::table('student_details', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained();
+        });
         Schema::table('organization_details', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('faculty_id')->references('id')->on('faculties')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('major_id')->references('id')->on('majors')->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('majors', function (Blueprint $table) {
             $table->foreignId('faculty_id')->references('id')->on('faculties')->onUpdate('cascade')->onDelete('cascade');
