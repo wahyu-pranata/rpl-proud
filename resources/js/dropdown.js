@@ -55,7 +55,7 @@ dropdowns.forEach(dropdown => {
     // Hover effect when mouse enters the dropdown
     dropdown.addEventListener('mouseover', () => {
         if (!options.classList.contains('options-open')) {
-            dropdownIcon.style.stroke = '#656565';  // Change stroke to black when dropdown is hovered but not open
+            dropdownIcon.style.stroke = '#030303';  // Change stroke to black when dropdown is hovered but not open
         }
     });
 
@@ -68,7 +68,7 @@ dropdowns.forEach(dropdown => {
 
     select.addEventListener('click', () => {
         if (!options.classList.contains('options-open')) {
-            dropdownIcon.style.stroke = '#656565';  // Reset stroke when dropdown is closed
+            dropdownIcon.style.stroke = '#030303';  // Reset stroke when dropdown is closed
         }
     });
 });
