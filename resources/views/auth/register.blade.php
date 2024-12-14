@@ -19,7 +19,6 @@
         </div>
         <x-input-field id="email" type="email">Email</x-input-field>
         <x-input-field id="password" type="password">Password</x-input-field>
-        <x-input-field id="conf-password" type="password">Confirm Password</x-input-field>
         <x-input-field id="nama" type="text">Nama</x-input-field>
         <x-input-field id="nim" type="text">NIM</x-input-field>
         <x-input-field id="telp" type="telp">No. Telp</x-input-field>
