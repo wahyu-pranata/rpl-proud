@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Faculty;
-use App\Models\Major;
+use App\Models\StudentDetails;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -45,11 +44,16 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+        ]);
+
+        StudentDetails::create([
             'nim' => $request->nim,
             'student_proof' => $request->file('student_proof')->storeAs('student_proofs', 'student_proof-' . $request->nim . '.pdf'),
-            'phone' => $request->phone,
+            'verified_by_major' => false,
             'faculty_id' => $request->faculty_id,
             'major_id' => $request->major_id,
+            'user_id' => $user->id,
         ]);
 
         event(new Registered($user));
