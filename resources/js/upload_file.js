@@ -1,24 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const fileInput = document.getElementById('bukti');
-    const fileLabel = document.querySelector('.file-name');
-    const uploadButton = document.querySelector('.upload-button');
+    // Select all file inputs, labels, and upload buttons
+    const fileInputs = document.querySelectorAll('.file-input');
+    const uploadButtons = document.querySelectorAll('.upload-button');
+    const fileLabels = document.querySelectorAll('.file-name');
 
-    uploadButton.addEventListener('click', () => {
-        fileInput.click();
-    });
+    uploadButtons.forEach((button, index) => {
+        const fileInput = fileInputs[index]; // Corresponding file input
+        const fileLabel = fileLabels[index]; // Corresponding label
 
-    fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0]; // Get the first selected file
-        const fileName = file ? file.name : 'No file selected';
-        const fileType = file ? file.type.split('/').pop() : ''; // Get the file type (e.g., 'jpeg', 'pdf')
+        button.addEventListener('click', () => {
+            fileInput.click();
+        });
 
-        const baseFileName = fileName ? fileName.slice(0, fileName.lastIndexOf('.')) : '';
-        const extension = fileType ? ' (' + fileType + ')' : '';
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            const fileName = file ? file.name : 'Upload File';
+            const fileType = file ? file.type.split('/').pop() : '';
+            const baseFileName = fileName ? fileName.slice(0, fileName.lastIndexOf('.')) : '';
+            const extension = fileType ? ' (' + fileType + ')' : '';
 
-        // Combine the truncated name with the extension
-        const truncatedFileName = baseFileName.length > 10 ? `${baseFileName.slice(0, 10)}...${extension}` : `${baseFileName}${extension}`;
+            // Truncate the file name
+            const truncatedFileName = baseFileName.length > 10 ? `${baseFileName.slice(0, 10)}...${extension}` : `${baseFileName}${extension}`;
 
-        // Update the label text with the file name and type
-        fileLabel.textContent = truncatedFileName;
+            // Update the label text
+            fileLabel.textContent = truncatedFileName;
+        });
     });
 });

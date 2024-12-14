@@ -25,7 +25,7 @@
         <x-input-field id="telp" type="telp">No. Telp</x-input-field>
         @php
             $Fakultas = ['Ilmu Budaya', 'Kedokteran', 'Hukum', 'Teknik', 'Pertanian', 'Ekonomi dan Bisnis', 'Peternakan', 'Matematika dan Ilmu Pengetahuan Alam', 'Kedokteran Hewan', 'Teknologi Pertanian', 'Pariwisata', 'Ilmu Sosial dan Ilmu Politik', 'Kelautan dan Perikanan'];
-            $Prodi = ['Informatika', 'Informatika 2', 'Informatika 3', 'informatika 4', 'informatika 5']
+            $Prodi = ['Informatika', 'Informatika 2']
         @endphp
         <x-dropdown :items="$Fakultas">Fakultas</x-dropdown>
         <x-dropdown :items="$Prodi">Program Studi</x-dropdown>
@@ -38,3 +38,4 @@
     </form>
 </body>
 </html>
+

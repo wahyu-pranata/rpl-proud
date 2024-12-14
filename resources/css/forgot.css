@@ -15,37 +15,15 @@ a{
     @apply no-underline text-dark-blue
 }
 
-input[type="checkbox"]{
-    @apply rounded-sm border-2 border-solid border-gray-primary bg-transparent
-}
-
-input[type="checkbox"]:focus{
-    @apply ring-transparent
-}
-
-input[type="checkbox"]:hover{
-    @apply border-light-blue bg-transparent
-}
-
-input[type="checkbox"]:checked{
-    @apply bg-light-blue border-light-blue
-}
-input[type="checkbox"]:hover ~ .remember-label, input[type="checkbox"]:checked ~ .remember-label{
-    @apply text-light-blue
-}
-
-input[type="checkbox"]:checked ~ label{
-    @apply text-light-blue
-}
-.login-box{
+.forgot-box{
     @apply relative w-[32em] rounded-lg pt-[5em] px-[2.5em] pb-[4em] items-center justify-center
 }
 
-.login-title-cont{
-    @apply absolute top-0 left-1/2 -translate-x-1/2 flex items-center justify-center h-1/5 w-fit
+.forgot-title-cont{
+    @apply absolute top-0 left-1/2 -translate-x-1/2 flex items-center justify-center h-1/5 w-full
 }
 
-.login-title{
+.forgot-title{
     @apply text-[40px] font-bold
 }
 
@@ -88,16 +66,6 @@ input[type="checkbox"]:checked ~ label{
 
 .input-field:focus ~ .input-label{
     @apply absolute  top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-light-blue
-}
-
-
-
-.remember-forgot{
-    @apply relative flex justify-between mt-[2em] mb-[1em] text-sm
-}
-
-.check-box{
-    @apply relative flex justify-between w-[8.5em]
 }
 
 

@@ -13,14 +13,8 @@
         <div class="login-title-cont">
             <span class="login-title">Login</span>
         </div>
-        <div class="input-box">
-            <input class="input-field" id="email"  placeholder=" " required type="email">
-            <label class="input-label" for="email">Email</label>
-        </div>
-        <div class="input-box">
-            <input class="input-field" id="password"  placeholder=" " required type="password">
-            <label class="input-label" for="password">Password</label>
-        </div>
+        <x-input-field id="email" type="email">Email</x-input-field>
+        <x-input-field id="password" type="password">Password</x-input-field>
         <div class="remember-forgot">
             <div class="remember-me">
                 <input class="custom-cb" id="remember" type="checkbox">

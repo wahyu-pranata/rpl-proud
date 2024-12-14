@@ -35,7 +35,7 @@ a{
 }
 
 .signup-title-cont{
-    @apply absolute -top-[5%] left-1/2 -translate-x-1/2 flex items-center justify-center h-1/5 w-fit
+    @apply absolute -top-[5%] left-1/2 -translate-x-1/2 flex items-center justify-center h-1/5 w-full
 }
 
 .signup-title{
@@ -62,9 +62,18 @@ a{
 .input-label{
     @apply absolute top-[1em] left-[1em] p-0 transition-all ease-in duration-300 bg-white
 }
+.input-field:-webkit-autofill {
+    @apply bg-transparent shadow-none;
+    -webkit-text-fill-color: inherit;
+    transition: background-color 5000s ease-in-out 0s;
+}
 
 .input-field:not(:placeholder-shown) ~ .input-label{
     @apply absolute top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-dark-primary
+}
+
+.input-field:hover ~ .input-label{
+    @apply text-dark-secondary
 }
 
 .input-field:focus ~ .input-label{
@@ -88,7 +97,15 @@ a{
 }
 
 .dropdown-icon{
-    @apply transition-all ease-in h-[0.7em] pr-1
+    @apply transition-all ease-in h-[0.7em] pr-1 stroke-gray-primary
+}
+
+.input-field:hover ~ .dropdown-icon{
+    @apply stroke-dark-secondary
+}
+
+.input-field:focus ~ .dropdown-icon{
+    @apply stroke-light-blue
 }
 
 .dropdown-icon-rotate{
@@ -96,7 +113,7 @@ a{
 }
 
 .options{
-    @apply list-none bg-gray-secondary rounded-lg overflow-x-hidden overflow-y-scroll h-[17.5em] absolute z-10 opacity-0 hidden transition-all
+    @apply list-none bg-gray-secondary rounded-lg overflow-x-hidden overflow-y-auto h-fit max-h-[17.5em] absolute z-10 opacity-0 hidden transition-all
 }
 
 .options-open{
@@ -113,7 +130,7 @@ input[type="file"]{
     @apply  text-ellipsis max-w-full
 }
 
-.bukti-label{
+.file-label{
     @apply mb-[0.5em]
 }
 
