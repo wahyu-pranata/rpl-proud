@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* default web-webkit  */
+*{
+    @apply m-0 p-0 box-border font-hind
+}
+
+body{
+    @apply bg-white flex w-screen h-screen my-[5%] justify-center items-center overflow-x-hidden
+}
+
+a{
+    @apply no-underline text-dark-blue
+}
+
+::-webkit-scrollbar {
+    @apply w-[0.5em]
+}
+
+::-webkit-scrollbar-track{
+    @apply bg-gray-primary rounded-sm
+}
+
+::-webkit-scrollbar-thumb{
+    @apply bg-dark-blue rounded-md
+}
+
+
+.signup-box{
+    @apply relative w-[32em] h-fit rounded-lg pt-[5em] px-[2.5em] pb-[4em]
+}
+
+.signup-title-cont{
+    @apply absolute -top-[5%] left-1/2 -translate-x-1/2 flex items-center justify-center h-1/5 w-fit
+}
+
+.signup-title{
+    @apply text-[40px] font-bold
+}
+
+/* text-field class */
+.input-box{
+    @apply relative flex flex-col my-[1.5em]
+}
+
+.input-field{
+    @apply w-full h-[3.5em] text-base border-2 border-solid border-gray-primary rounded-lg ps-[1em] pe-[1.5em] outline-none
+}
+
+.input-field:hover{
+    @apply border-dark-secondary cursor-pointer
+}
+
+.input-field:focus{
+    @apply border-light-blue cursor-auto
+}
+
+.input-label{
+    @apply absolute top-[1em] left-[1em] p-0 transition-all ease-in duration-300 bg-white
+}
+
+.input-field:not(:placeholder-shown) ~ .input-label{
+    @apply absolute top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-dark-primary
+}
+
+.input-field:focus ~ .input-label{
+    @apply absolute top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-light-blue
+}
+
+/* dropdown class */
+.dropdown{
+    @apply relative my-[1.5em]
+}
+
+.select{
+    @apply flex items-center justify-between
+}
+
+.select-clicked{
+    @apply border-light-blue text-light-blue
+}
+.select-clicked:hover{
+    @apply border-light-blue
+}
+
+.dropdown-icon{
+    @apply transition-all ease-in h-[0.7em] pr-1
+}
+
+.dropdown-icon-rotate{
+    @apply -rotate-180
+}
+
+.options{
+    @apply list-none bg-gray-secondary rounded-lg overflow-x-hidden overflow-y-scroll h-[17.5em] absolute z-10 opacity-0 hidden transition-all
+}
+
+.options-open{
+    @apply block opacity-100 w-full
+}
+
+/* file upload */
+
+input[type="file"]{
+    @apply hidden
+}
+
+.file-name{
+    @apply  text-ellipsis max-w-full
+}
+
+.bukti-label{
+    @apply mb-[0.5em]
+}
+
+.upload-button{
+    @apply w-fit h-[3.2em] border-solid border-light-blue border-2 flex items-center justify-between rounded-lg px-[1em] text-light-blue
+}
+
+.upload-button:active{
+    @apply border-transparent
+}
+
+.upload-icon{
+    @apply w-[1.5em] mr-2
+}
+
+.options li{
+    @apply w-full h-[3.5em] text-base ps-[1em] flex items-center
+}
+
+.options li:hover{
+    @apply bg-light-blue text-light-primary cursor-pointer
+}
+
+.active{
+    @apply border-l-4 border-l-dark-blue
+}
+
+/* dark blue button class */
+.button-box{
+    @apply flex justify-center items-center my-[1em]
+}
+
+.dark-blue-button{
+    @apply shadow-none outline-none w-fit h-fit border-2 border-solid border-dark-blue py-[0.5em] px-[1em] bg-dark-blue rounded-lg text-light-primary text-base font-semibold
+}
+
+.dark-blue-button:hover{
+    @apply bg-transparent text-dark-blue
+}
+
+.dark-blue-button:active{
+    @apply bg-transparent border-transparent text-dark-blue
+}
+
+/* text to give direction */
+
+.text-dir{
+    @apply flex justify-center items-center text-sm
+}
+
