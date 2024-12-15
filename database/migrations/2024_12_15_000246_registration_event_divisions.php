@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_timelines', function (Blueprint $table) {
+        Schema::create('registration_event_divisions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->dateTime('start_datetime');
-            $table->dateTime('end_datetime');
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_timelines');
+        Schema::dropIfExists('registration_event_divisions');
     }
 };
