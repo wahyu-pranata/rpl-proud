@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="button-box">
-            <button class="dark-blue-button">Login</button>
+            <button type="submit" class="dark-blue-button">Login</button>
         </div>
         <div class="text-dir">
             <span>Don't have an account?&nbsp</span>

@@ -7,7 +7,7 @@
     @apply m-0 p-0 box-border font-hind
 }
 
-body{
+.form{
     @apply bg-white flex w-screen h-screen justify-center items-center
 }
 

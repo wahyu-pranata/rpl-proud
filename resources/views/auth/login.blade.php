@@ -9,7 +9,8 @@
     <title>Login</title>
 </head>
 <body>
-    <form method="POST" action="{{ route('login') }}">
+    <x-navbar></x-navbar>
+    <form class='form' method="POST" action="{{ route('login') }}">
         @csrf
 
 
@@ -30,7 +31,7 @@
                     @endif
                 </div>
             </div>
-            <x-primary-button>Login</x-primary-button>
+            <x-primary-button type="submit">Login</x-primary-button>
             <div class="text-dir">
                 <span>Don't have an account?&nbsp</span>
                 <a href="/register">Signup</a>

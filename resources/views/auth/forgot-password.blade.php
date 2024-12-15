@@ -8,33 +8,35 @@
     <title>Forgot Password</title>
 </head>
 <body>
-    <div class="forgot-box">
-        <div class="forgot-title-cont">
-            <span class="forgot-title">Forgot Password?</span>
+    <x-navbar></x-navbar>
+    <div class="form">
+        <div class="forgot-box">
+            <div class="forgot-title-cont">
+                <span class="forgot-title">Forgot Password?</span>
+            </div>
+            <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            </div>
+
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
+
+                <!-- Email Address -->
+                <div>
+                    <x-input-field id="email" type="email">Email</x-input-field>
+                    <x-input-field id="password" type="password">Password</x-input-field>
+                </div>
+
+                <div class="button-box">
+                    <x-primary-button type="submit">
+                        {{ __('Email Password Reset Link') }}
+                    </x-primary-button>
+                </div>
+                <div class="text-dir">
+                    <a href="/login">Back</a>
+                </div>
+            </form>
         </div>
-        <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-input-field id="email" type="email">Email</x-input-field>
-                <x-input-field id="password" type="password">Password</x-input-field>
-            </div>
-
-            <div class="button-box">
-                <x-primary-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-primary-button>
-            </div>
-            <div class="text-dir">
-                <a href="/login">Back</a>
-            </div>
-        </form>
     </div>
-
 </body>
 </html>
