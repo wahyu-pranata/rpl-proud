@@ -17,4 +17,12 @@ class Invitation extends Model
     {
         return $this->belongsTo(Event::class);
     }
+    public function eventDivision(): BelongsTo
+    {
+        return $this->belongsTo(EventDivision::class);
+    }
+    public function message(): BelongsTo
+    {
+        return $this->belongsTo(Message::class);
+    }
 }
