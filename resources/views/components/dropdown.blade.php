@@ -1,35 +1,17 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white dark:bg-gray-700'])
+{{-- How to use? --}}
+{{-- <x-dropdown :items='(items array)'>(Label)</x-dropdown>
+!!!NEED TO IMPORT EXT CSS FILE FOR STYLES!!! --}}
 
-@php
-$alignmentClasses = match ($align) {
-    'left' => 'ltr:origin-top-left rtl:origin-top-right start-0',
-    'top' => 'origin-top',
-    default => 'ltr:origin-top-right rtl:origin-top-left end-0',
-};
-
-$width = match ($width) {
-    '48' => 'w-48',
-    default => $width,
-};
-@endphp
-
-<div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
-    <div @click="open = ! open">
-        {{ $trigger }}
+<div class="dropdown">
+    <div class="input-field select">
+        <span class="selected">{{$slot}}</span>
+        <svg class="dropdown-icon" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.0001 1.5L8.41182 8.5L2.23535 1.5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
     </div>
-
-    <div x-show="open"
-            x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 scale-95"
-            x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave="transition ease-in duration-75"
-            x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-95"
-            class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}"
-            style="display: none;"
-            @click="open = false">
-        <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
-            {{ $content }}
-        </div>
-    </div>
+    <ul class="options">
+        @foreach ($items as $value => $item)
+        <li data-value="{{$value}}">{{ $item }}</li>
+        @endforeach
+    </ul>
 </div>
