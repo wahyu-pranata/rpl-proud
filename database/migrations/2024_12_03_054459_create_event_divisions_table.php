@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('event_divisions', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('job_description');
             $table->timestamps();
         });

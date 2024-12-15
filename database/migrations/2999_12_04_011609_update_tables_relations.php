@@ -60,7 +60,6 @@ return new class extends Migration
             $table->foreignId('event_id')->references('id')->on('events')->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('event_divisions', function (Blueprint $table) {
-            $table->foreignId('division_id')->references('id')->on('divisions')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('event_id')->references('id')->on('events')->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('event_division_users', function (Blueprint $table) {
