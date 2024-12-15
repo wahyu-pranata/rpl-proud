@@ -1,3 +1,7 @@
+{{-- How to use? --}}
+{{-- <x-dropdown :items='(items array)'>(Label)</x-dropdown>
+!!!NEED TO IMPORT EXT CSS FILE FOR STYLES!!! --}}
+
 <div class="dropdown">
     <div class="input-field select">
         <span class="selected">{{$slot}}</span>

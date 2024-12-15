@@ -1,3 +1,7 @@
+{{-- How to use? --}}
+{{-- <x-checkbox id='(id)'>(Label)</x-checkbox>
+!!!NEED TO IMPORT EXT CSS FILE FOR STYLES!!! --}}
+
 @props(['id'])
 
 <div class="check-box">

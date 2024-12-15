@@ -1,3 +1,7 @@
+{{-- How to use? --}}
+{{-- <x-upload-file id='(id)'>(Label)</x-upload-file>
+!!!NEED TO IMPORT EXT CSS FILE FOR STYLES!!! --}}
+
 @props(['id'])
 <div class="input-box">
     <label class="file-label" for="{{$id}}">{{$slot}}</label>
