@@ -25,8 +25,8 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::get('/dashboard/mahasiswa', function () {
-    return view('dashboard.mahasiswa');
-});
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->name('dashboard');
 
 require __DIR__ . '/auth.php';

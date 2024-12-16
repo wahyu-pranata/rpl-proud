@@ -43,36 +43,24 @@
 @endsection
 
 @section('right-section')
-  <table class="w-full text-center">
-    <thead class="bg-dark-blue text-white">
-      <tr>
-        <th>Kepanitiaan</th>
-        <th>Bidang 1</th>
-        <th>Bidang 2</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>INVENTION</td>
-        <td>Bidang Wawww</td>
-        <td>Bidang Wawwww</td>
-        <td>Aktif</td>
-      </tr>
-      <tr>
-        <td>INVENTION</td>
-        <td>Bidang Wawww</td>
-        <td>Bidang Wawwww</td>
-        <td>Aktif</td>
-      </tr>
-      <tr>
-        <td>INVENTION</td>
-        <td>Bidang Wawww</td>
-        <td>Bidang Wawwww</td>
-        <td>Aktif</td>
-      </tr>
-    </tbody>
-  </table>
-  <table></table>
-  <table></table>
+  <h2 class="font-bold text-2xl">Pendaftaran</h2>
+  <x-table :headers="['Kepanitiaan', 'Bidang 1', 'Bidang 2', 'Status', '']" :rows="[
+      ['Invention', 'Bidang Lomba', 'Bidang 3D', 'Ditolak'],
+      ['Invention', 'Bidang Lomba', 'Bidang 3D', 'Ditolak'],
+      ['Invention', 'Bidang Lomba', 'Bidang 3D', 'Ditolak'],
+      ['Invention', 'Bidang Lomba', 'Bidang 3D', 'Ditolak'],
+  ]" />
+  <h2 class="font-bold text-2xl">Berjalan</h2>
+  <x-table :headers="['Kepanitiaan', 'Bidang', 'Jabatan', 'Acara Selanjutnya', 'Waktu Acara', '']" :rows="[
+      ['Invention', 'Bidang Lomba', 'Sub-Koordinator', 'Rapat Umum 1', '01/01/2025'],
+      ['Invention', 'Bidang Lomba', 'Sub-Koordinator', 'Rapat Umum 1', '01/01/2025'],
+      ['Invention', 'Bidang Lomba', 'Sub-Koordinator', 'Rapat Umum 1', '01/01/2025'],
+  ]" />
+
+  <h2 class="font-bold text-2xl">Riwayat</h2>
+  <x-table :headers="['Kepanitiaan', 'Bidang', 'Jabatan', 'Waktu', '']" :rows="[
+      ['Invention', 'Bidang Lomba', 'Sub-Koordinator', '01/01/2025 - 01/09/2025'],
+      ['Invention', 'Bidang Lomba', 'Sub-Koordinator', '01/01/2025 - 01/09/2025'],
+      ['Invention', 'Bidang Lomba', 'Sub-Koordinator', '01/01/2025 - 01/09/2025'],
+  ]" />
 @endsection

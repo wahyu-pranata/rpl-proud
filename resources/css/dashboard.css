@@ -4,8 +4,9 @@ table th {
 }
 
 table thead {
-  @apply rounded-lg overflow-hidden outline outline-red-500 
+  @apply rounded-lg overflow-hidden outline
 }
+
 table thead tr {
   @apply rounded-lg
 }

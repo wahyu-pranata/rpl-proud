@@ -32,10 +32,12 @@
         <a href="#">Mahasiswa</a>
       </div>
 
-      <div class="flex items-center space-x-2 unselect-tab">
+      <div
+        class="flex items-center space-x-2 unselect-tab {{ request()->routeIs('dashboard') ? 'border-b-4 border-b-light-blue' : '' }}">
         <a href="#" class="text-end">
-          <div class="font-bold">Organisasi Mahasiswa</div>
-          <div class="text-sm">Lingkup Organisasi</div>
+          <div class="font-bold {{ request()->routeIs('dashboard') ? 'text-light-blue' : '' }}">Organisasi Mahasiswa
+          </div>
+          <div class="text-sm {{ request()->routeIs('dashboard') ? 'text-light-blue' : '' }}">Lingkup Organisasi</div>
         </a>
         <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
       </div>
