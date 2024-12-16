@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    @apply m-0 p-0 box-border font-hind
+}
+
+.form{
+    @apply bg-white flex w-screen h-screen justify-center items-center
+}
+
+a{
+    @apply no-underline text-dark-blue
+}
+
+.forgot-box{
+    @apply relative w-[32em] rounded-lg pt-[5em] px-[2.5em] pb-[4em] items-center justify-center
+}
+
+.forgot-title-cont{
+    @apply absolute top-0 left-1/2 -translate-x-1/2 flex items-center justify-center h-1/5 w-full
+}
+
+.forgot-title{
+    @apply text-[40px] font-bold
+}
+
+.input-box{
+    @apply relative flex flex-col my-[1.5em]
+}
+
+.input-field{
+    @apply w-full h-[3.5em] text-base border-2 border-solid border-gray-primary rounded-lg ps-[1em] pe-[1.5em] outline-none
+}
+
+.input-field:hover{
+    @apply border-dark-secondary cursor-pointer
+}
+
+.input-field:hover ~ .input-label{
+    @apply text-dark-secondary
+}
+
+.input-field:focus{
+    @apply border-light-blue cursor-auto
+}
+.input-field:-webkit-autofill {
+    @apply bg-transparent shadow-none;
+    -webkit-text-fill-color: inherit;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.input-label{
+    @apply absolute top-[1em] left-[1em] p-0 transition-all ease-in duration-300 bg-white
+}
+
+.input-field:not(:placeholder-shown) ~ .input-label{
+    @apply absolute top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-dark-primary
+}
+
+.input-field:hover ~ .input-label{
+    @apply text-dark-secondary
+}
+
+.input-field:focus ~ .input-label{
+    @apply absolute  top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-light-blue
+}
+
+
+.text-dir{
+    @apply flex justify-center items-center text-sm
+}
+
