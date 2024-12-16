@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('content');
+            $table->string('body');
+            $table->enum('target_level', ['university', 'faculty', 'major', 'event', 'event_division', 'individual']);
+            $table->enum('type', ['personal', 'broadcast', 'invitation']);
             $table->timestamps();
         });
     }

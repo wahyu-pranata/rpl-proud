@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_divisions', function (Blueprint $table) {
+        Schema::create('organization_details', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('job_description');
+            $table->enum('organization_level', ['university', 'faculty', 'major']);
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_divisions');
+        Schema::dropIfExists('student_details');
     }
 };

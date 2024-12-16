@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -51,25 +52,36 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Faculty::class);
     }
-
     public function major(): BelongsTo
     {
         return $this->belongsTo(Major::class);
     }
-    public function registrations(): HasMany
+    public function studentDetails(): HasOne
     {
-        return $this->hasMany(Registration::class);
+        return $this->hasOne(StudentDetails::class);
     }
-    public function eventStatus(): HasMany
+    public function organizationDetails(): HasOne
     {
-        return $this->hasMany(EventUser::class);
+        return $this->hasOne(OrganizationDetails::class);
     }
-    public function invitation(): HasMany
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
+    }
+    public function registrationAnswers(): HasMany
+    {
+        return $this->hasMany(RegistrationAnswer::class);
+    }
+    public function events(): BelongsToMany
+    {
+        return $this->belongsToMany(Event::class, EventUser::class)->withPivot('status');
+    }
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
+    public function invitations(): HasMany
     {
         return $this->hasMany(Invitation::class);
-    }
-    public function roles(): HasMany
-    {
-        return $this->hasMany(Role::class);
     }
 }

@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->dateTime('date_start');
-            $table->dateTime('date_end');
-            $table->dateTime('registration_date_end');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->string('group_chat_link');
             $table->timestamps();
         });

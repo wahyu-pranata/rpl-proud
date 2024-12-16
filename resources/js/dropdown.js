@@ -2,9 +2,9 @@ const dropdowns = document.querySelectorAll('.dropdown');
 
 dropdowns.forEach(dropdown => {
     const select = dropdown.querySelector('.select');
-    const dropdown_icon = dropdown.querySelector('.dropdown-icon');
+    const dropdownIcon = dropdown.querySelector('.dropdown-icon');
     const options = dropdown.querySelector('.options');
-    const option_lists = dropdown.querySelectorAll('ul li');
+    const optionLists = dropdown.querySelectorAll('ul li');
     const selected = dropdown.querySelector('.selected');
 
     // Toggle the dropdown
@@ -19,37 +19,56 @@ dropdowns.forEach(dropdown => {
                 otherSelect.classList.remove('select-clicked');
                 otherDropdownIcon.classList.remove('dropdown-icon-rotate');
                 otherOptions.classList.remove('options-open');
-                otherDropdownIcon.src = 'icon/dropdown.png'; // Reset to default icon
+                otherDropdownIcon.style.stroke = '';  // Reset stroke for other dropdowns
             }
         });
 
         // Toggle the current dropdown
         select.classList.toggle('select-clicked');
-        dropdown_icon.classList.toggle('dropdown-icon-rotate');
+        dropdownIcon.classList.toggle('dropdown-icon-rotate');
         options.classList.toggle('options-open');
 
-        // Change the icon based on the state
+        // Change stroke to blue if the dropdown is open
         if (options.classList.contains('options-open')) {
-            dropdown_icon.src = 'icon/dropdown-blue.png';
+            dropdownIcon.style.stroke = '#679CE4';
         } else {
-            dropdown_icon.src = 'icon/dropdown.png';
+            dropdownIcon.style.stroke = '';  // Reset stroke when dropdown is closed
         }
     });
 
     // Select the option
-    option_lists.forEach(option_list => {
-        option_list.addEventListener('click', () => {
-            selected.innerText = option_list.innerText;
+    optionLists.forEach(optionList => {
+        optionList.addEventListener('click', () => {
+            selected.innerText = optionList.innerText;
             select.classList.remove('select-clicked');
-            dropdown_icon.src = 'icon/dropdown.png';
-            dropdown_icon.classList.remove('dropdown-icon-rotate');
+            dropdownIcon.classList.remove('dropdown-icon-rotate');
             options.classList.remove('options-open');
 
             // Remove active class from all options and add it to the selected option
-            option_lists.forEach(option => {
+            optionLists.forEach(option => {
                 option.classList.remove('active');
             });
-            option_list.classList.add('active');
+            optionList.classList.add('active');
         });
+    });
+
+    // Hover effect when mouse enters the dropdown
+    dropdown.addEventListener('mouseover', () => {
+        if (!options.classList.contains('options-open')) {
+            dropdownIcon.style.stroke = '#030303';  // Change stroke to black when dropdown is hovered but not open
+        }
+    });
+
+    // Reset stroke when mouse leaves
+    dropdown.addEventListener('mouseout', () => {
+        if (!options.classList.contains('options-open')) {
+            dropdownIcon.style.stroke = '';  // Reset stroke when mouse leaves and dropdown is not open
+        }
+    });
+
+    select.addEventListener('click', () => {
+        if (!options.classList.contains('options-open')) {
+            dropdownIcon.style.stroke = '#030303';  // Reset stroke when dropdown is closed
+        }
     });
 });
