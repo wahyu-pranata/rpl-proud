@@ -18,6 +18,10 @@ Route::get('/inbox', function () {
     return view('inbox');
 });
 
+Route::get('/inbox_open', function () {
+    return view('inbox_open');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

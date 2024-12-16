@@ -13,9 +13,7 @@
                     stroke="currentColor"
                     class="size-6"
                 >
-                    @foreach ($tab['icon_paths'] as $path)
-                        <path stroke-linecap="round" stroke-linejoin="round" d="{{ $path }}" />
-                    @endforeach
+                    <path stroke-linecap="round" stroke-linejoin="round" d="{{ $tab['icon_path'] }}" />
                 </svg>
                 {{-- label --}}
                 <div>{{ $tab['label'] }}</div>
