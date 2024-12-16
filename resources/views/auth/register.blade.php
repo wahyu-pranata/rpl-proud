@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/js/dropdown.js')
+    @vite('resources/js/submit.js')
     @vite('resources/js/upload_file.js')
     @vite('resources/css/signup.css')
     <title>Signup</title>
 </head>
 <body class="overflow-x-hidden">
     <x-navbar></x-navbar>
-    <form method="POST" action="{{ route('register') }}" class="form">
+    <form id="myForm" method="POST" action="{{ route('register') }}" class="form">
         <div class="signup-box">
             @csrf
 
@@ -28,8 +29,10 @@
                 $Fakultas = ['Ilmu Budaya', 'Kedokteran', 'Hukum', 'Teknik', 'Pertanian', 'Ekonomi dan Bisnis', 'Peternakan', 'Matematika dan Ilmu Pengetahuan Alam', 'Kedokteran Hewan', 'Teknologi Pertanian', 'Pariwisata', 'Ilmu Sosial dan Ilmu Politik', 'Kelautan dan Perikanan'];
                 $Prodi = ['Informatika', 'Informatika 2']
             @endphp
+            <div required></div>
             <x-dropdown :items="$Fakultas">Fakultas</x-dropdown>
             <x-dropdown :items="$Prodi">Program Studi</x-dropdown>
+            <div id="errorMessage" style="display:none; color: red;">Please select an option!</div>
             <x-upload-file id="bukti-mahasiswa">Bukti Mahasiswa Aktif</x-upload-file>
             <x-primary-button type="submit">Signup</x-primary-button>
             <div class="text-dir">
