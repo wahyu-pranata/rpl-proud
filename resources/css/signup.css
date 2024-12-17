@@ -164,7 +164,15 @@ input[type="file"]{
 }
 
 .upload-button:active{
-    @apply border-transparent
+    @apply border-transparent bg-transparent
+}
+
+.upload-button:active .file-name{
+    @apply text-light-blue
+}
+
+.upload-button:active svg path{
+    @apply fill-light-blue
 }
 
 
