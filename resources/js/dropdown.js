@@ -78,15 +78,4 @@ dropdowns.forEach(dropdown => {
             }
         }
     });
-
-    // Prevent form submission if no option is selected
-    const errorMessage = document.querySelector("#errorMessage"); // Ensure you have this element in your HTML
-    document.getElementById("myForm").addEventListener("submit", (event) => {
-        if (!selectedValue) {
-            event.preventDefault(); // Prevent form submission
-            errorMessage.style.display = "block"; // Show error message
-        } else {
-            errorMessage.style.display = "none"; // Hide error message if a value is selected
-        }
-    });
 });
