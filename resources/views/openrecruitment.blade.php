@@ -44,7 +44,7 @@
     </div>
 
         <!-- Periode Rekrutmen -->
-    <div class="flex items-center gap-4 my-4">
+    <div class="flex items-center gap-4 my-6">
         <!-- Awal Rekrutmen -->
         <div class="flex items-center border-2 border-gray-300 rounded-lg px-4 py-2">
         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,11 +88,38 @@
         class="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
 
         <!-- Jawaban Singkat -->
-        <div class="relative flex-1">
-        <input required type="text" id="endDate" name="agenda_date[]" class="date-placeholder w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Waktu Agenda" 
-        onfocus="(this.type='date'); this.classList.remove('date-placeholder');" 
-        onblur="if(!this.value){ this.type='text'; this.classList.add('date-placeholder'); }">
-        </div>
+        <!-- Dropdown Container -->
+<div class="relative">
+
+    <!-- Dropdown Menu -->
+    <select required id="dropdownMenu" name="option[]" class="px-4 py-2 border rounded focus:outline-none">
+        <option>Ya</option>
+        <option>Tidak</option>
+        <option>Tidak tau</option>
+    </select>
+</div>
+
+<script>
+    // Ambil elemen tombol dan menu dropdown
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    // Tambahkan event listener untuk toggle dropdown
+    dropdownButton.addEventListener('click', (e) => {
+      e.stopPropagation(); // Menghentikan event bubbling
+    dropdownMenu.classList.toggle('hidden');
+    });
+
+    // Tutup dropdown jika klik di luar area dropdown
+    window.addEventListener('click', () => {
+    dropdownMenu.classList.add('hidden');
+    });
+
+    // Fungsi untuk mengatur opsi yang dipilih
+    function selectOption(option) {
+      dropdownButton.textContent = option; // Mengubah teks pada tombol
+      dropdownMenu.classList.add('hidden'); // Menyembunyikan menu dropdown
+    }
+</script>
 
         <!-- Tombol Hapus -->
         <button 
