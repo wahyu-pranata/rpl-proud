@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Role extends Model
@@ -14,8 +13,8 @@ class Role extends Model
     {
         return $this->belongsToMany(Permission::class, 'role_permissions');
     }
-    public function eventDivisions(): BelongsToMany
+    public function eventDivisionUsers(): BelongsToMany
     {
-        return $this->belongsToMany(EventDivision::class);
+        return $this->belongsToMany(EventDivisionUser::class);
     }
 }

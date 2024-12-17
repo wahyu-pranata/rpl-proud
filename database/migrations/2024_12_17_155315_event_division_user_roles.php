@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_division_roles', function (Blueprint $table) {
+        Schema::create('event_division_user_roles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_division_roles');
+        Schema::dropIfExists('event_division_user_roles');
     }
 };

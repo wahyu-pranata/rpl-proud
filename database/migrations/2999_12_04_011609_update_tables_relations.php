@@ -28,8 +28,8 @@ return new class extends Migration
             $table->foreignId('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('permission_id')->references('id')->on('permissions')->onUpdate('cascade')->onDelete('cascade');
         });
-        Schema::table('event_division_roles', function (Blueprint $table) {
-            $table->foreignId('event_division_id')->references('id')->on('event_divisions')->onUpdate('cascade')->onDelete('cascade');
+        Schema::table('event_division_user_roles', function (Blueprint $table) {
+            $table->foreignId('event_division_user_id')->references('id')->on('event_division_users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('questions', function (Blueprint $table) {
