@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\FacultyMajorSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\RoleSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,5 +20,9 @@ class DatabaseSeeder extends Seeder
 
         $userSeeder = new UserSeeder();
         $userSeeder->run();
+
+        $RoleSeeder = new RoleSeeder();
+        $RoleSeeder->run();
+
     }
 }
