@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Proker</title>
-    @vite(['resources/css/addproker.css', 'resources/js/addproker.js', 'resources/js/upload_file.js']) 
+    @vite(['resources/css/editproker.css', 'resources/js/editproker.js', 'resources/js/upload_file.js']) 
 
 </head>
 <body class="font-hind">
@@ -152,9 +152,23 @@
 
 <div id="CoordList" class="mb-4 w-1/2"></div>
 
+<!-- Container Tombol -->
+    <div class="flex items-center justify-center mt-8">
 <!-- Tombol Unggah -->
-    <div class="flex items-center flex-col">
-    <input type="submit" value="Unggah" class="bg-blue-900 text-white font-semibold mb-24 py-2 px-6 rounded-lg cursor-pointer hover:bg-blue-700">
+    <input type="submit" value="Simpan" class="bg-blue-900 text-white font-semibold mx-5 py-2 px-6 rounded-lg cursor-pointer hover:bg-blue-700">
+<!-- Tombol Hapus -->
+    <button 
+    class="border border-red-500 text-red-500 mx-5 px-6 py-2 rounded hover:bg-red-500 hover:text-white"
+    onclick="refreshPage()">
+    Hapus
+    </button>
+    </div>
+    <script>
+        // Fungsi untuk me-refresh halaman
+    function refreshPage() {
+    window.location.reload();
+    }
+    </script>
     </article>
 </body>
 </html>

@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
-    return view('addproker');
+    return view('openrecruitment');
 });
 
 Route::get('/dashboard', function () {
@@ -19,5 +19,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+Route::get('/addproker', function () {
+    return view('addproker');
+})->name('Tambah Proker');
+
+Route::get('/editproker', function () {
+    return view('editproker');
+})->name('Tambah Proker');
 
 require __DIR__.'/auth.php';

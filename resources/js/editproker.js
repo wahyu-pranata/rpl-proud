@@ -41,13 +41,12 @@ function addSie() {
     sieInput.value = "";
 
     // Buat elemen card baru
-    const card = document.createElement("div")
+    const card = document.createElement("div");
     card.className =
         "border-2 rounded-lg p-6 border-gray-400 mb-6 flex justify-between items-center";
 
     const textCard = document.createElement("div");
-    textCard.className =
-        "flex flex-col";
+    textCard.className = "flex flex-col";
 
     //Tambahkan teks ke dalam card
     const sieCoordtext = document.createElement("span");
@@ -81,7 +80,6 @@ sieInput.addEventListener("keypress", (event) => {
         addSie();
     }
 });
-
 
 //Konfirmasi Tanggal Salah
 document.addEventListener("DOMContentLoaded", () => {
@@ -143,3 +141,4 @@ inviteBtn.addEventListener("click", () => {
     beforeConfirm.classList.add("hidden"); // Sembunyikan tampilan sebelum konfirmasi
     afterConfirm.classList.remove("hidden"); // Tampilkan tampilan setelah konfirmasi
 });
+
