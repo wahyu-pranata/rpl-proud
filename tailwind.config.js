@@ -22,8 +22,24 @@ export default {
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                hind: ['Hind']
+                hind: ['Hind'],
+                libre: ['"Libre Bodoni"', 'serif'],
 
+
+            },
+            keyframes: {
+                slide: {
+                    '0%': { transform: 'translateX(-100%)' },
+                    '100%': { transform: 'translateX(0)' },
+                },
+                slidereverse: {
+                    '0%': { transform: 'translateX(0)' },
+                    '100%': { transform: 'translateX(-100%)' },
+                },
+            },
+            animation: {
+                slide: 'slide 20s linear infinite',
+                slidereverse: 'slidereverse 20s linear infinite',
             },
         }
     },

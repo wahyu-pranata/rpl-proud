@@ -6,9 +6,12 @@ dropdowns.forEach(dropdown => {
     const options = dropdown.querySelector('.options');
     const optionLists = dropdown.querySelectorAll('ul li');
     const selected = dropdown.querySelector('.selected');
+    const defaultText = selected.innerText;
+    let selectedValue = null;
 
-    // Toggle the dropdown
-    select.addEventListener('click', () => {
+    select.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent closing dropdown when clicking inside
+
         // Close all other dropdowns
         dropdowns.forEach(otherDropdown => {
             if (otherDropdown !== dropdown) {
@@ -19,7 +22,7 @@ dropdowns.forEach(dropdown => {
                 otherSelect.classList.remove('select-clicked');
                 otherDropdownIcon.classList.remove('dropdown-icon-rotate');
                 otherOptions.classList.remove('options-open');
-                otherDropdownIcon.style.stroke = '';  // Reset stroke for other dropdowns
+                otherDropdownIcon.style.stroke = ''; // Reset stroke for other dropdowns
             }
         });
 
@@ -32,14 +35,17 @@ dropdowns.forEach(dropdown => {
         if (options.classList.contains('options-open')) {
             dropdownIcon.style.stroke = '#679CE4';
         } else {
-            dropdownIcon.style.stroke = '';  // Reset stroke when dropdown is closed
+            dropdownIcon.style.stroke = ''; // Reset stroke when dropdown is closed
         }
     });
 
-    // Select the option
+    // Select an option
     optionLists.forEach(optionList => {
-        optionList.addEventListener('click', () => {
-            selected.innerText = optionList.innerText;
+        optionList.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent the document click listener from triggering
+            selected.innerText = optionList.innerText; // Update selected text
+            selectedValue = optionList.getAttribute("data-value"); // Store the selected value
+
             select.classList.remove('select-clicked');
             dropdownIcon.classList.remove('dropdown-icon-rotate');
             options.classList.remove('options-open');
@@ -49,26 +55,38 @@ dropdowns.forEach(dropdown => {
                 option.classList.remove('active');
             });
             optionList.classList.add('active');
+
+            // Reset stroke color
+            dropdownIcon.style.stroke = '';
         });
     });
 
-    // Hover effect when mouse enters the dropdown
-    dropdown.addEventListener('mouseover', () => {
-        if (!options.classList.contains('options-open')) {
-            dropdownIcon.style.stroke = '#030303';  // Change stroke to black when dropdown is hovered but not open
+    // Reset dropdown when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!dropdown.contains(event.target)) {
+            if (options.classList.contains('options-open')) {
+                selected.innerText = defaultText; // Reset to default text only if no option was selected
+                select.classList.remove('select-clicked');
+                dropdownIcon.classList.remove('dropdown-icon-rotate');
+                options.classList.remove('options-open');
+                dropdownIcon.style.stroke = ''; // Reset stroke
+                selectedValue = null;
+
+                optionLists.forEach(option => {
+                    option.classList.remove('active');
+                });
+            }
         }
     });
 
-    // Reset stroke when mouse leaves
-    dropdown.addEventListener('mouseout', () => {
-        if (!options.classList.contains('options-open')) {
-            dropdownIcon.style.stroke = '';  // Reset stroke when mouse leaves and dropdown is not open
-        }
-    });
-
-    select.addEventListener('click', () => {
-        if (!options.classList.contains('options-open')) {
-            dropdownIcon.style.stroke = '#030303';  // Reset stroke when dropdown is closed
+    // Prevent form submission if no option is selected
+    const errorMessage = document.querySelector("#errorMessage"); // Ensure you have this element in your HTML
+    document.getElementById("myForm").addEventListener("submit", (event) => {
+        if (!selectedValue) {
+            event.preventDefault(); // Prevent form submission
+            errorMessage.style.display = "block"; // Show error message
+        } else {
+            errorMessage.style.display = "none"; // Hide error message if a value is selected
         }
     });
 });

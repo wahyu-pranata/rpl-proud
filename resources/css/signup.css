@@ -117,28 +117,6 @@ a{
     @apply block opacity-100 w-full
 }
 
-/* file upload */
-
-input[type="file"]{
-    @apply hidden
-}
-
-.file-name{
-    @apply  text-ellipsis max-w-full
-}
-
-.file-label{
-    @apply mb-[0.5em]
-}
-
-.upload-button{
-    @apply w-fit h-[3.2em] border-solid border-light-blue border-2 flex items-center justify-between rounded-lg px-[1em] text-light-blue
-}
-
-.upload-button:active{
-    @apply border-transparent
-}
-
 .upload-icon{
     @apply w-[1.5em] mr-2
 }
@@ -154,6 +132,49 @@ input[type="file"]{
 .active{
     @apply border-l-4 border-l-dark-blue
 }
+
+/* file upload */
+
+input[type="file"]{
+    @apply hidden
+}
+
+.upload-button:hover{
+    @apply bg-light-blue
+}
+
+.upload-button:hover .file-name{
+    @apply text-light-primary
+}
+
+.upload-button:hover svg path{
+    @apply fill-light-primary
+}
+
+.file-name{
+    @apply  text-ellipsis max-w-full
+}
+
+.file-label{
+    @apply mb-[0.5em]
+}
+
+.upload-button{
+    @apply w-fit h-[3.2em] border-solid border-light-blue border-2 flex items-center justify-between rounded-lg px-[1em] text-light-blue space-x-2
+}
+
+.upload-button:active{
+    @apply border-transparent bg-transparent
+}
+
+.upload-button:active .file-name{
+    @apply text-light-blue
+}
+
+.upload-button:active svg path{
+    @apply fill-light-blue
+}
+
 
 /* dark blue button class */
 .button-box{
@@ -178,3 +199,6 @@ input[type="file"]{
     @apply flex justify-center items-center text-sm
 }
 
+.error {
+    @apply border-solid border-red-700 border-2
+}

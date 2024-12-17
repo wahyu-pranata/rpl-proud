@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/js/app.js')
     @vite('resources/js/dropdown.js')
+    @vite('resources/js/submit.js')
     @vite('resources/js/upload_file.js')
     @vite('resources/css/signup.css')
     <title>Signup</title>
