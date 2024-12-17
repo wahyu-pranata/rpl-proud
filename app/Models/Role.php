@@ -14,8 +14,8 @@ class Role extends Model
     {
         return $this->belongsToMany(Permission::class, 'role_permissions');
     }
-    public function users(): BelongsToMany
+    public function eventDivisions(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(EventDivision::class);
     }
 }

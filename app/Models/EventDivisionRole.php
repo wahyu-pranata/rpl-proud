@@ -4,15 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class RegistrationEventDivision extends Model
+class EventDivisionRole extends Model
 {
-    public function registration(): BelongsTo
-    {
-        return $this->belongsTo(Registration::class);
-    }
     public function eventDivision(): BelongsTo
     {
         return $this->belongsTo(EventDivision::class);
+    }
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
     }
 }

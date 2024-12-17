@@ -18,7 +18,7 @@ class EventUser extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function in_divisions(): BelongsToMany
+    public function eventDivisions(): BelongsToMany
     {
         return $this->belongsToMany(EventDivision::class, EventDivisionUser::class);
     }
