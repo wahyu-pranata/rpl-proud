@@ -4,18 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class RegistrationAnswer extends Model
+class RegistrationEventDivision extends Model
 {
-    protected $guarded = ['id'];
-
     public function registration(): BelongsTo
     {
         return $this->belongsTo(Registration::class);
     }
-    public function user(): BelongsTo
+    public function eventDivision(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(EventDivision::class);
     }
 }

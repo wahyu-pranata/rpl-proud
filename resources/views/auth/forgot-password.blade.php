@@ -23,8 +23,7 @@
 
                 <!-- Email Address -->
                 <div>
-                    <x-input-field id="email" type="email">Email</x-input-field>
-                    <x-input-field id="password" type="password">Password</x-input-field>
+                    <x-input-field name="email" id="email" type="email">Email</x-input-field>
                 </div>
 
                 <div class="button-box">

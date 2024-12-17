@@ -48,6 +48,14 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    public function faculty(): BelongsTo
+    {
+        return $this->belongsTo(Faculty::class);
+    }
+    public function major(): BelongsTo
+    {
+        return $this->belongsTo(Major::class);
+    }
     public function studentDetails(): HasOne
     {
         return $this->hasOne(StudentDetails::class);
@@ -56,20 +64,20 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(OrganizationDetails::class);
     }
-    public function registrations(): HasMany
+    public function registrationAnswers(): HasMany
     {
-        return $this->hasMany(Registration::class);
+        return $this->hasMany(RegistrationAnswer::class);
     }
-    public function eventStatus(): HasMany
+    public function events(): BelongsToMany
     {
-        return $this->hasMany(EventUser::class);
+        return $this->belongsToMany(Event::class, EventUser::class)->withPivot('status');
     }
-    public function invitation(): HasMany
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
+    public function invitations(): HasMany
     {
         return $this->hasMany(Invitation::class);
-    }
-    public function roles(): HasMany
-    {
-        return $this->hasMany(Role::class);
     }
 }
