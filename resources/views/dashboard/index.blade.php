@@ -49,9 +49,13 @@
         </div>
       </div>
     </div>
-    <button class="border-2 border-red-500 text-red-500 px-4 py-2 hover:bg-red-500 hover:text-white rounded-lg">
-      Logout
-    </button>
+    <form action="{{ route('logout') }}" method="POST">
+      @csrf
+      <button type="submit"
+        class="border-2 border-red-500 text-red-500 px-4 py-2 hover:bg-red-500 hover:text-white rounded-lg">
+        Logout
+      </button>
+    </form>
   </div>
   @if (auth()->user()->type == 'organization')
     <h2 class="font-bold text-2xl">Data Anggota</h2>
