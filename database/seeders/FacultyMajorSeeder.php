@@ -29,7 +29,6 @@ class FacultyMajorSeeder extends Seeder
             ['name' => 'Pariwisata'],
             ['name' => 'Ilmu Sosial dan Ilmu Politik'],
             ['name' => 'Kelautan dan Perikanan'],
-            ['name' => 'Universitas']
         ],
             ['id', 'name']
         );
