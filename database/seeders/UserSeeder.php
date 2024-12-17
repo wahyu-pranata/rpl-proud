@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Organisasi
-            // Tingkat Universitas
+        // Tingkat Universitas
         $user = User::factory()->create([
             'name' => 'Badan Eksekutif Mahasiswa Universitas Udayana',
             'email' => 'bem@ubud.ac.id',
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
         ]);
 
 
-            // Tingkat Fakultas
+        // Tingkat Fakultas
         $user = User::factory()->create([
             'name' => 'Senat Mahasiswa Fakultas Ilmu Budaya',
             'email' => 'sfib@ubud.ac.id',
@@ -198,7 +198,7 @@ class UserSeeder extends Seeder
             'email' => 'himabio@ubud.ac.id',
             'phone' => '0812345678',
             'password' => Hash::make('password'),
-            'faculty_id' => Faculty::where('name', '=','Matematika dan Ilmu Pengetahuan Alam')->value('id'),
+            'faculty_id' => Faculty::where('name', '=', 'Matematika dan Ilmu Pengetahuan Alam')->value('id'),
             'major_id' => Major::where('name', '=', 'Biologi')->value('id'),
         ]);
         OrganizationDetails::create([
@@ -210,14 +210,13 @@ class UserSeeder extends Seeder
             'name' => 'Himpunan Mahasiswa Informatika',
             'email' => 'himaif@ubud.ac.id',
             'phone' => '0812345678',
-            'password' => Hash::make(value: 'password'),
-            'faculty_id' => Faculty::where('name', '=','Matematika dan Ilmu Pengetahuan Alam')->value('id'),
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Matematika dan Ilmu Pengetahuan Alam')->value('id'),
             'major_id' => Major::where('name', '=', 'Informatika')->value('id'),
         ]);
         OrganizationDetails::create([
             'organization_level' => 'major',
             'user_id' => $user->id,
         ]);
-
     }
 }

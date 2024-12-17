@@ -8,10 +8,9 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
-
     theme: {
         extend: {
-            colors:{
+            colors: {
                 'dark-primary': '#656565',
                 'dark-secondary': '#030303',
                 'dark-blue': '#2D4970',
@@ -24,8 +23,6 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 hind: ['Hind'],
                 libre: ['"Libre Bodoni"', 'serif'],
-
-
             },
             keyframes: {
                 slide: {
@@ -43,6 +40,5 @@ export default {
             },
         }
     },
-
     plugins: [forms],
 };

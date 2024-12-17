@@ -3,8 +3,9 @@
 !!!NEED TO IMPORT EXT CSS FILE FOR STYLES!!! --}}
 
 
-@props(['id', 'name', 'type'])
+@props(['id', 'type', 'name'])
 <div class="input-box">
-    <input class="input-field" id="{{ $id }}" name="{{ $name }}" placeholder=" " required type="{{ $type }}">
-    <label class="input-label" for="{{ $id }}">{{ $slot }}</label>
+  <input class="input-field" id="{{ $id }}" name="{{ $name }}" placeholder=" " required
+    type="{{ $type }}">
+  <label class="input-label" for="{{ $id }}">{{ $slot }}</label>
 </div>
