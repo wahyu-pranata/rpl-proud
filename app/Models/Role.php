@@ -13,8 +13,8 @@ class Role extends Model
     {
         return $this->belongsToMany(Permission::class, 'role_permissions');
     }
-    public function eventDivisionUsers(): BelongsToMany
+    public function eventUsers(): BelongsToMany
     {
-        return $this->belongsToMany(EventDivisionUser::class);
+        return $this->belongsToMany(EventUser::class, EventUserRole::class);
     }
 }
