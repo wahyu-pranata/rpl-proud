@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('end_datetime');
             $table->timestamps();
         });
     }

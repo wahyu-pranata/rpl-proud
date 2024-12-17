@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('style/login.css') }}">
     @vite('resources/css/login.css')
+    @vite('resources/js/app.js')
     <title>Login</title>
 </head>
 <body>
@@ -19,8 +20,8 @@
             <div class="login-title-cont">
                 <span class="login-title">Login</span>
             </div>
-            <x-input-field id="email" type="email">Email</x-input-field>
-            <x-input-field id="password" type="password">Password</x-input-field>
+            <x-input-field name="email" id="email" type="email">Email</x-input-field>
+            <x-input-field name="password" id="password" type="password">Password</x-input-field>
             <div class="remember-forgot">
                 <x-checkbox id="remember">Remember me</x-checkbox>
                 <div>

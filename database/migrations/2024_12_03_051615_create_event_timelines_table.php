@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('event_timelines', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->dateTime('time_start');
-            $table->dateTime('time_emd');
+            $table->dateTime('start_datetime');
+            $table->dateTime('end_datetime');
             $table->timestamps();
         });
     }

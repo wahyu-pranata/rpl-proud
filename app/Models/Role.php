@@ -4,23 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Role extends Model
 {
     protected $guarded = ['id'];
 
-    public function division(): BelongsTo
+    public function permissions(): BelongsToMany
     {
-        return $this->belongsTo(Division::class);
+        return $this->belongsToMany(Permission::class, 'role_permissions');
     }
-    public function accesses(): HasMany
+    public function users(): BelongsToMany
     {
-        return $this->hasMany(Access::class);
-    }
-    public function eventUser(): BelongsToMany
-    {
-        return $this->belongsToMany(EventUser::class);
+        return $this->belongsToMany(User::class);
     }
 }
