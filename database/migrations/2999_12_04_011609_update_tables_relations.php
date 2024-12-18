@@ -15,6 +15,10 @@ return new class extends Migration
             $table->foreignId('faculty_id')->references('id')->on('faculties')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('major_id')->references('id')->on('majors')->onUpdate('cascade')->onDelete('cascade');
         });
+        Schema::table('events', function (Blueprint $table) {
+            $table->foreignId('faculty_id')->references('id')->on('faculties')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('major_id')->references('id')->on('majors')->onUpdate('cascade')->onDelete('cascade');
+        });
         Schema::table('organization_details', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
         });
