@@ -70,6 +70,7 @@
             $proker = ['proker 1' => '', 'proker 2' => '', 'proker 3' => '', 'proker 4' => '', 'proker 5' => '', 'proker 6' => '', 'proker 7' => '', 'proker 8' =>''];
         @endphp
         <div class="mx-10 w-fit">
+            @auth
             @if (auth()->user()->type == 'organization')
                 <a href="">
                     <x-primary-button>Tambah</x-primary-button>
@@ -83,9 +84,10 @@
                     </x-select-field>
                 </div>
             @endif
+            @endauth
             @guest
                 <a href="/login">
-                    <x-dropdown :items="$filter">Filter</x-dropdown>
+                    <x-dropdown :items="$filters">Filter</x-dropdown>
                 </a>
             @endguest
         </div>
