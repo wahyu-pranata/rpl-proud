@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="font-hind ">
-        <x-navbar auth="guest"></x-navbar>
+        <x-navbar auth='admin'></x-navbar>
         <div class="relative w-screen h-[36em] overflow-hidden">
             <div class="absolute inset-0 bg-black bg-opacity-30"></div>
             <div class="absolute h-[60%] w-1 bg-light-primary left-[6em]"></div>
@@ -59,39 +59,48 @@
             <span>Berbudaya</span>
         </div>
     </div>
-    <div id="problem" class="py-40 space-y-10">
+    <div id="problem" class="py-40 space-y-10" x-init="selectedLevel = 'Universitas';" x-data="{selectedLevel: 'Universitas'}">
         <div class="font-hind mx-10">
-            <header class="text-[2.8em] font-semibold tracking-widest">OPEN RECRUITMENS</header>
+            <header class="text-[2.8em] font-semibold tracking-widest">OPEN RECRUITMENTS</header>
             <p class="text-[18px]">Ayo daftarkan dirimu dalam kegiatan-kegiatan kepanitiaan yang menarik, kami tunggu kontribusi kalian!</p>
         </div>
         @php
-            $auth = 'mah';
-            $filter = ['Universitas', 'Fakultas', 'Program Studi'];
+            $auth = 'mahasiswa';
+            $filters = ['Universitas', 'Fakultas', 'Program Studi'];
             $proker = ['proker 1' => '', 'proker 2' => '', 'proker 3' => '', 'proker 4' => '', 'proker 5' => '', 'proker 6' => '', 'proker 7' => '', 'proker 8' =>''];
         @endphp
         <div class="mx-10 w-fit">
-            @if ($auth == 'admin')
+            @auth
+            @if (auth()->user()->type == 'organization')
                 <a href="">
                     <x-primary-button>Tambah</x-primary-button>
                 </a>
-            @elseif ($auth == 'mahasiswa')
-                <x-dropdown :items="$filter">Filter</x-dropdown>
-            @else
-                <a href="/login">
-                    <x-dropdown :items="$filter">Filter</x-dropdown>
-                </a>
+            @elseif (auth()->user()->type == 'student')
+                <div>
+                    <x-select-field fieldText="Universitas">
+                        @foreach ($filters as $filter)
+                        <li x-on:click="selectedLevel = @js($filter)">{{ $filter }}</li>
+                        @endforeach
+                    </x-select-field>
+                </div>
             @endif
+            @endauth
+            @guest
+                <a href="/login">
+                    <x-dropdown :items="$filters">Filter</x-dropdown>
+                </a>
+            @endguest
         </div>
         @if ($auth == 'admin' or $auth == 'mahasiswa')
             <div class="mySwiper">
                 <div class="swiper-wrapper">
                     @foreach ( $proker as $namaProker => $poster)
                         <a class="swiper-slide" href="">
-                            <div class="flex flex-col">
+                            <div class="flex flex-col mb-2">
                                 <span class="text-xl w-4/5 overflow-ellipsis">{{$namaProker}}</span>
                                 <span class="text-sm text-dark-primary">Waktu Proker</span>
                             </div>
-                            <div id='img' class="h-[24em] w-[-16em] bg-slate-300 rounded-xl"></div>
+                            <img src="" class="h-[24em] w-[-16em] bg-slate-300 rounded-xl" />
                         </a>
                     @endforeach
                 </div class="swiper-pagination"></div>

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('end_datetime');
+            $table->string('poster');
+            $table->enum('status', ['open', 'closed']);
             $table->timestamps();
         });
     }
