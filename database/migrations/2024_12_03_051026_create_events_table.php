@@ -18,6 +18,8 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('group_chat_link');
+            $table->string('job_description');
+            $table->string('poster');
             $table->timestamps();
         });
     }

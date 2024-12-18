@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class EventDivisionUser extends Model
+class EventUserRole extends Model
 {
     protected $guarded = ['id'];
 
@@ -14,8 +13,8 @@ class EventDivisionUser extends Model
     {
         return $this->belongsTo(EventUser::class);
     }
-    public function eventDivision(): BelongsTo
+    public function role(): BelongsTo
     {
-        return $this->belongsTo(EventDivision::class);
+        return $this->belongsTo(Role::class);
     }
 }

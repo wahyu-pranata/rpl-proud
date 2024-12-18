@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('editrecruitment');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -16,4 +16,21 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+
+Route::get('/addproker', function () {
+    return view('addproker');
+})->name('Tambah Proker');
+
+Route::get('/editproker', function () {
+    return view('editproker');
+})->name('Edit Proker');
+
+Route::get('/openrecruitment', function () {
+    return view('openrecruitment');
+})->name('Tambah Rekrutmen');
+
+Route::get('/editrecruitment', function () {
+    return view('editrecruitment');
+})->name('Edit Rekrutmen');
+
+require __DIR__.'/auth.php';
