@@ -2,13 +2,16 @@ const dropdowns = document.querySelectorAll('.dropdown');
 
 dropdowns.forEach(dropdown => {
     const select = dropdown.querySelector('.select');
-    const dropdown_icon = dropdown.querySelector('.dropdown-icon');
+    const dropdownIcon = dropdown.querySelector('.dropdown-icon');
     const options = dropdown.querySelector('.options');
-    const option_lists = dropdown.querySelectorAll('ul li');
+    const optionLists = dropdown.querySelectorAll('ul li');
     const selected = dropdown.querySelector('.selected');
+    const defaultText = selected.innerText;
+    let selectedValue = null;
 
-    // Toggle the dropdown
-    select.addEventListener('click', () => {
+    select.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent closing dropdown when clicking inside
+
         // Close all other dropdowns
         dropdowns.forEach(otherDropdown => {
             if (otherDropdown !== dropdown) {
@@ -19,37 +22,60 @@ dropdowns.forEach(dropdown => {
                 otherSelect.classList.remove('select-clicked');
                 otherDropdownIcon.classList.remove('dropdown-icon-rotate');
                 otherOptions.classList.remove('options-open');
-                otherDropdownIcon.src = 'icon/dropdown.png'; // Reset to default icon
+                otherDropdownIcon.style.stroke = ''; // Reset stroke for other dropdowns
             }
         });
 
         // Toggle the current dropdown
         select.classList.toggle('select-clicked');
-        dropdown_icon.classList.toggle('dropdown-icon-rotate');
+        dropdownIcon.classList.toggle('dropdown-icon-rotate');
         options.classList.toggle('options-open');
 
-        // Change the icon based on the state
+        // Change stroke to blue if the dropdown is open
         if (options.classList.contains('options-open')) {
-            dropdown_icon.src = 'icon/dropdown-blue.png';
+            dropdownIcon.style.stroke = '#679CE4';
         } else {
-            dropdown_icon.src = 'icon/dropdown.png';
+            dropdownIcon.style.stroke = ''; // Reset stroke when dropdown is closed
         }
     });
 
-    // Select the option
-    option_lists.forEach(option_list => {
-        option_list.addEventListener('click', () => {
-            selected.innerText = option_list.innerText;
+    // Select an option
+    optionLists.forEach(optionList => {
+        optionList.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent the document click listener from triggering
+            selected.innerText = optionList.innerText; // Update selected text
+            selectedValue = optionList.getAttribute("data-value"); // Store the selected value
+
             select.classList.remove('select-clicked');
-            dropdown_icon.src = 'icon/dropdown.png';
-            dropdown_icon.classList.remove('dropdown-icon-rotate');
+            dropdownIcon.classList.remove('dropdown-icon-rotate');
             options.classList.remove('options-open');
 
             // Remove active class from all options and add it to the selected option
-            option_lists.forEach(option => {
+            optionLists.forEach(option => {
                 option.classList.remove('active');
             });
-            option_list.classList.add('active');
+            optionList.classList.add('active');
+
+            // Reset stroke color
+            dropdownIcon.style.stroke = '';
         });
+    });
+
+    // Reset dropdown when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!dropdown.contains(event.target)) {
+            if (options.classList.contains('options-open')) {
+                selected.innerText = defaultText; // Reset to default text only if no option was selected
+                select.classList.remove('select-clicked');
+                dropdownIcon.classList.remove('dropdown-icon-rotate');
+                options.classList.remove('options-open');
+                dropdownIcon.style.stroke = ''; // Reset stroke
+                selectedValue = null;
+
+                optionLists.forEach(option => {
+                    option.classList.remove('active');
+                });
+            }
+        }
     });
 });

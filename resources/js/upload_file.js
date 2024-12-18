@@ -1,24 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const fileInput = document.getElementById('bukti');
-    const fileLabel = document.querySelector('.file-name');
-    const uploadButton = document.querySelector('.upload-button');
+    const fileInputs = document.querySelectorAll('.file-input');
+    const uploadButtons = document.querySelectorAll('.upload-button');
+    const fileLabels = document.querySelectorAll('.file-name');
 
-    uploadButton.addEventListener('click', () => {
-        fileInput.click();
-    });
+    uploadButtons.forEach((button, index) => {
+        const fileInput = fileInputs[index];
+        const fileLabel = fileLabels[index];
 
-    fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0]; // Get the first selected file
-        const fileName = file ? file.name : 'No file selected';
-        const fileType = file ? file.type.split('/').pop() : ''; // Get the file type (e.g., 'jpeg', 'pdf')
+        button.addEventListener('click', () => {
+            fileInput.click();
+        });
 
-        const baseFileName = fileName ? fileName.slice(0, fileName.lastIndexOf('.')) : '';
-        const extension = fileType ? ' (' + fileType + ')' : '';
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            const fileName = file ? file.name : 'Upload File';
 
-        // Combine the truncated name with the extension
-        const truncatedFileName = baseFileName.length > 10 ? `${baseFileName.slice(0, 10)}...${extension}` : `${baseFileName}${extension}`;
+            const maxFileNameLength = 30;
+            const truncatedFileName =
+                fileName.length > maxFileNameLength
+                    ? `${fileName.slice(0, 15)}...${fileName.slice(-10)}`
+                    : fileName;
 
-        // Update the label text with the file name and type
-        fileLabel.textContent = truncatedFileName;
+            fileLabel.textContent = truncatedFileName;
+        });
     });
 });

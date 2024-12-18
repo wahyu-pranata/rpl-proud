@@ -7,12 +7,16 @@
     @apply m-0 p-0 box-border font-hind
 }
 
-body{
-    @apply bg-white flex w-screen h-screen justify-center items-center
+.form{
+    @apply bg-white flex flex-col w-screen h-screen justify-center items-center
 }
 
 a{
     @apply no-underline text-dark-blue
+}
+
+input[type="checkbox"]{
+    @apply rounded-sm border-2 border-solid border-gray-primary bg-transparent
 }
 
 input[type="checkbox"]:focus{
@@ -20,10 +24,17 @@ input[type="checkbox"]:focus{
 }
 
 input[type="checkbox"]:hover{
-    @apply border-light-blue
+    @apply border-light-blue bg-transparent
 }
 
+input[type="checkbox"]:checked{
+    @apply bg-light-blue border-light-blue
+}
 input[type="checkbox"]:hover ~ .remember-label, input[type="checkbox"]:checked ~ .remember-label{
+    @apply text-light-blue
+}
+
+input[type="checkbox"]:checked ~ label{
     @apply text-light-blue
 }
 .login-box{
@@ -46,8 +57,21 @@ input[type="checkbox"]:hover ~ .remember-label, input[type="checkbox"]:checked ~
     @apply w-full h-[3.5em] text-base border-2 border-solid border-gray-primary rounded-lg ps-[1em] pe-[1.5em] outline-none
 }
 
+.input-field:hover{
+    @apply border-dark-secondary cursor-pointer
+}
+
+.input-field:hover ~ .input-label{
+    @apply text-dark-secondary
+}
+
 .input-field:focus{
-    @apply border-light-blue
+    @apply border-light-blue cursor-auto
+}
+.input-field:-webkit-autofill {
+    @apply bg-transparent shadow-none;
+    -webkit-text-fill-color: inherit;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .input-label{
@@ -58,43 +82,26 @@ input[type="checkbox"]:hover ~ .remember-label, input[type="checkbox"]:checked ~
     @apply absolute top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-dark-primary
 }
 
+.input-field:hover ~ .input-label{
+    @apply text-dark-secondary
+}
+
 .input-field:focus ~ .input-label{
     @apply absolute  top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-light-blue
 }
+
+
 
 .remember-forgot{
     @apply relative flex justify-between mt-[2em] mb-[1em] text-sm
 }
 
-.remember-me{
+.check-box{
     @apply relative flex justify-between w-[8.5em]
 }
 
-/* input[type="checkbox"]{
-    @apply appearance-none rounded-lg w-[1.5em] h-[1.5em] border-2 border-solid border-gray-primary
-}
 
-input[type="checkbox"]:checked{
-    @apply border-2 border-solid border-light-blue bg-[url('/icon/checkmark.png')] bg-center bg-no-repeat, bg-light-blue
-} */
-
-.button-box{
-    @apply flex justify-center items-center my-[1em]
-}
-
-.dark-blue-button{
-    @apply shadow-none outline-none w-fit h-fit border-2 border-solid border-dark-blue py-[0.5em] px-[1em] bg-dark-blue rounded-lg text-light-primary text-base font-semibold
-}
-
-.dark-blue-button:hover{
-    @apply bg-transparent text-dark-blue
-}
-
-.dark-blue-button:active{
-    @apply bg-transparent border-transparent text-dark-blue
-}
-
-.signup-dir{
+.text-dir{
     @apply flex justify-center items-center text-sm
 }
 

@@ -1,5 +1,94 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+* {
+    @apply m-0 p-0 box-border
+}
+
+::-webkit-scrollbar {
+    @apply w-[0.5em]
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-gray-primary rounded-sm
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-dark-blue rounded-md
+}
+
+body {
+    @apply overflow-x-hidden
+}
+
+/* body .swiper-wrapper{
+    @apply space-x-16
+} */
+
+body .swiper-slide {
+    @apply h-fit w-fit
+}
+
+.input-field {
+    @apply w-full h-[3.5em] text-base border-2 border-solid border-gray-primary rounded-lg ps-[1em] pe-[1.5em] outline-none
+}
+
+.input-field:hover {
+    @apply border-dark-secondary
+}
+
+.dropdown {
+    @apply relative my-[1.5em] w-[13em]
+}
+
+.select {
+    @apply flex items-center justify-between
+}
+
+.select-clicked {
+    @apply border-light-blue text-light-blue
+}
+
+.select-clicked:hover {
+    @apply border-light-blue
+}
+
+.select-clicked .dropdown-icon {
+    @apply stroke-light-blue
+}
+
+.dropdown-icon {
+    @apply transition-all ease-in h-[0.7em] pr-1 stroke-gray-primary
+}
+
+.dropdown-icon-rotate {
+    @apply -rotate-180
+}
+
+.options {
+    @apply list-none bg-gray-secondary rounded-lg overflow-x-hidden overflow-y-auto h-fit max-h-[17.5em] absolute z-10 opacity-0 hidden transition-all
+}
+
+.options-open {
+    @apply block opacity-100 w-full
+}
+
+.upload-icon {
+    @apply w-[1.5em] mr-2
+}
+
+.options li {
+    @apply w-full h-[3.5em] text-base ps-[1em] flex items-center
+}
+
+.options li:hover {
+    @apply bg-light-blue text-light-primary cursor-pointer
+}
+
+.active {
+    @apply border-l-4 border-l-dark-blue
+}

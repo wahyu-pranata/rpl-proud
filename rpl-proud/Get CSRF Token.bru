@@ -1,0 +1,21 @@
+meta {
+  name: Get CSRF Token
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8000/sanctum/csrf-cookie
+  body: none
+  auth: none
+}
+
+script:post-response {
+  const setCookieHeader = res.headers.get('set-cookie')[0];
+  
+  const xsrfTokenMatch  = setCookieHeader.match(/XSRF-TOKEN=([^;]+)/);
+  
+  const xsrfToken = decodeURIComponent(xsrfTokenMatch[1]);
+  
+  bru.setEnvVar('X-XSRF-TOKEN',xsrfToken);
+}

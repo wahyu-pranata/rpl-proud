@@ -9,8 +9,8 @@
     @apply m-0 p-0 box-border font-hind
 }
 
-body{
-    @apply bg-white flex w-screen h-screen my-[5%] justify-center items-center overflow-x-hidden
+.form{
+    @apply bg-white flex flex-col w-screen h-screen justify-center items-center
 }
 
 a{
@@ -31,11 +31,11 @@ a{
 
 
 .signup-box{
-    @apply relative w-[32em] h-fit rounded-lg pt-[5em] px-[2.5em] pb-[4em]
+    @apply relative w-[32em] h-fit rounded-lg pt-[5em] px-[2.5em] pb-[4em] mt-[15%]
 }
 
 .signup-title-cont{
-    @apply absolute -top-[5%] left-1/2 -translate-x-1/2 flex items-center justify-center h-1/5 w-fit
+    @apply absolute -top-[5%] left-1/2 -translate-x-1/2 flex items-center justify-center h-1/5 w-full
 }
 
 .signup-title{
@@ -62,9 +62,18 @@ a{
 .input-label{
     @apply absolute top-[1em] left-[1em] p-0 transition-all ease-in duration-300 bg-white
 }
+.input-field:-webkit-autofill {
+    @apply bg-transparent shadow-none;
+    -webkit-text-fill-color: inherit;
+    transition: background-color 5000s ease-in-out 0s;
+}
 
 .input-field:not(:placeholder-shown) ~ .input-label{
     @apply absolute top-[-0.5em] left-[0.75em] text-sm px-[0.5em] text-dark-primary
+}
+
+.input-field:hover ~ .input-label{
+    @apply text-dark-secondary
 }
 
 .input-field:focus ~ .input-label{
@@ -83,12 +92,17 @@ a{
 .select-clicked{
     @apply border-light-blue text-light-blue
 }
+
 .select-clicked:hover{
     @apply border-light-blue
 }
 
+.select-clicked .dropdown-icon{
+    @apply stroke-light-blue
+}
+
 .dropdown-icon{
-    @apply transition-all ease-in h-[0.7em] pr-1
+    @apply transition-all ease-in h-[0.7em] pr-1 stroke-gray-primary
 }
 
 .dropdown-icon-rotate{
@@ -96,33 +110,11 @@ a{
 }
 
 .options{
-    @apply list-none bg-gray-secondary rounded-lg overflow-x-hidden overflow-y-scroll h-[17.5em] absolute z-10 opacity-0 hidden transition-all
+    @apply list-none bg-gray-secondary rounded-lg overflow-x-hidden overflow-y-auto h-fit max-h-[17.5em] absolute z-10 opacity-0 hidden transition-all
 }
 
 .options-open{
     @apply block opacity-100 w-full
-}
-
-/* file upload */
-
-input[type="file"]{
-    @apply hidden
-}
-
-.file-name{
-    @apply  text-ellipsis max-w-full
-}
-
-.bukti-label{
-    @apply mb-[0.5em]
-}
-
-.upload-button{
-    @apply w-fit h-[3.2em] border-solid border-light-blue border-2 flex items-center justify-between rounded-lg px-[1em] text-light-blue
-}
-
-.upload-button:active{
-    @apply border-transparent
 }
 
 .upload-icon{
@@ -140,6 +132,49 @@ input[type="file"]{
 .active{
     @apply border-l-4 border-l-dark-blue
 }
+
+/* file upload */
+
+input[type="file"]{
+    @apply hidden
+}
+
+.upload-button:hover{
+    @apply bg-light-blue
+}
+
+.upload-button:hover .file-name{
+    @apply text-light-primary
+}
+
+.upload-button:hover svg path{
+    @apply fill-light-primary
+}
+
+.file-name{
+    @apply  text-ellipsis max-w-full
+}
+
+.file-label{
+    @apply mb-[0.5em]
+}
+
+.upload-button{
+    @apply w-fit h-[3.2em] border-solid border-light-blue border-2 flex items-center justify-between rounded-lg px-[1em] text-light-blue space-x-2
+}
+
+.upload-button:active{
+    @apply border-transparent bg-transparent
+}
+
+.upload-button:active .file-name{
+    @apply text-light-blue
+}
+
+.upload-button:active svg path{
+    @apply fill-light-blue
+}
+
 
 /* dark blue button class */
 .button-box{
@@ -164,3 +199,6 @@ input[type="file"]{
     @apply flex justify-center items-center text-sm
 }
 
+.error {
+    @apply border-solid border-red-700 border-2
+}

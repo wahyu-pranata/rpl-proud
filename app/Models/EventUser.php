@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class EventUser extends Model
 {
@@ -18,8 +18,12 @@ class EventUser extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function role(): HasMany
+    public function eventDivisions(): BelongsToMany
     {
-        return $this->hasMany(Role::class);
+        return $this->belongsToMany(EventDivision::class, EventDivisionUser::class);
+    }
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, EventUserRole::class);
     }
 }

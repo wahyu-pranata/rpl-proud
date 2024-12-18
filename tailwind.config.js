@@ -4,14 +4,19 @@ import forms from '@tailwindcss/forms';
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
+        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+        "./storage/framework/views/*.php",
+        "./resources/views/**/*.blade.php",
     ],
 
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
     theme: {
         extend: {
-            colors:{
+            colors: {
                 'dark-primary': '#656565',
                 'dark-secondary': '#030303',
                 'dark-blue': '#2D4970',
@@ -22,11 +27,24 @@ export default {
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                hind: ['Hind']
-
+                hind: ['Hind'],
+                libre: ['"Libre Bodoni"', 'serif'],
+            },
+            keyframes: {
+                slide: {
+                    '0%': { transform: 'translateX(-100%)' },
+                    '100%': { transform: 'translateX(0)' },
+                },
+                slidereverse: {
+                    '0%': { transform: 'translateX(0)' },
+                    '100%': { transform: 'translateX(-100%)' },
+                },
+            },
+            animation: {
+                slide: 'slide 20s linear infinite',
+                slidereverse: 'slidereverse 20s linear infinite',
             },
         }
     },
-
     plugins: [forms],
 };
