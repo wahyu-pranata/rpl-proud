@@ -31,8 +31,8 @@ document.getElementById("add-pertanyaan").addEventListener("click", function () 
     const newQuestion = document.querySelector("[data-pertanyaan]").cloneNode(true);
 
     // Bersihkan nilai input pada elemen baru
-    newQuestion.querySelector('input[name="question_name[]"]').value = "";
-    newQuestion.querySelector('select[name="option[]"]').value = "";
+    newQuestion.querySelector('input[name="edit_question_name[]"]').value = "";
+    newQuestion.querySelector('select[name="edit_option[]"]').value = "";
 
     // Tambahkan ke daftar pertanyaan
     questionList.appendChild(newQuestion);

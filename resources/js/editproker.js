@@ -3,83 +3,87 @@ function goBack() {
     window.history.back();
 }
 
-// Ambil elemen DOM
-const addSieButton = document.getElementById("addSieButton");
-const sieInput = document.getElementById("sieInput");
-const sieList = document.getElementById("sieList");
+    let inputCounter = 1; // Counter untuk input ID
+    const inputContainer = document.getElementById("input-container");
+    const addSieButton = document.getElementById("add-sie-btn");
+    const sieList = document.getElementById("sie-list");
+    const coordList = document.getElementById("CoordList");
 
-// Fungsi untuk menambahkan Sie
-function addSie() {
-    const sieName = sieInput.value.trim(); // Ambil input dan hapus spasi kosong
-    if (sieName === "") return; // Abaikan jika input kosong
+    // Fungsi untuk Menambahkan Card
+    function addCard(sieValue, inputId) {
+        const card = document.createElement("div");
+        card.className =
+            "card border-2 rounded-lg p-4 border-gray-400 mb-4 flex justify-between items-center";
+        card.setAttribute("data-input-id", inputId);
 
-    // Buat elemen chip baru
-    const chip = document.createElement("div");
-    chip.className =
-        "flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg bg-white shadow-sm";
+        card.innerHTML = `
+        <div>
+        <h3 class="font-semibold text-gray-800">Koordinator Sie ${sieValue}</h3>
+        <p class="text-gray-500 my-3 text-sm">Undang mahasiswa untuk bergabung</p>
+        </div>
+        <button 
+        class="text-blue-950 font-semibold border-2 border-blue-950 px-4 py-2 rounded-lg hover:bg-blue-950 hover:text-white delete-card-btn">
+        Undang
+        </button>
+    `;
 
-    // Tambahkan teks ke dalam chip
-    const sieText = document.createElement("span");
-    sieText.textContent = sieName;
-    chip.appendChild(sieText);
-
-    // Tambahkan tombol hapus
-    const removeButton = document.createElement("button");
-    removeButton.className =
-        "w-5 h-5 flex items-center justify-center rounded-full bg-red-600 text-white text-sm font-bold hover:bg-red-700";
-    removeButton.textContent = "-";
-    removeButton.onclick = () => {
-        sieList.removeChild(chip); // Hapus chip dari daftar
-        CoordList.removeChild(card); //Hapus card dari daftar
-    };
-    chip.appendChild(removeButton);
-
-    // Tambahkan chip ke dalam daftar
-    sieList.appendChild(chip);
-
-    // Kosongkan input setelah ditambahkan
-    sieInput.value = "";
-
-    // Buat elemen card baru
-    const card = document.createElement("div");
-    card.className =
-        "border-2 rounded-lg p-6 border-gray-400 mb-6 flex justify-between items-center";
-
-    const textCard = document.createElement("div");
-    textCard.className = "flex flex-col";
-
-    //Tambahkan teks ke dalam card
-    const sieCoordtext = document.createElement("span");
-    sieCoordtext.textContent = "Koordinator Sie " + sieName;
-    sieCoordtext.className = "font-bold text-gray-700";
-    textCard.appendChild(sieCoordtext);
-    const sieInvitation = document.createElement("p");
-    sieInvitation.textContent = "Undang mahasiswa untuk bergabung";
-    sieInvitation.className = "top-10 text-sm text-gray-500 mt-2";
-    textCard.appendChild(sieInvitation);
-
-    card.appendChild(textCard);
-
-    //Tambahkan button ke dalam card
-    const sieButtoninv = document.createElement("button");
-    sieButtoninv.className =
-        "border-2 font-semibold text-blue-950 border-blue-950 px-4 py-1 rounded-lg hover:bg-blue-950 hover:text-white";
-    sieButtoninv.textContent = "Undang";
-    card.appendChild(sieButtoninv);
-
-    //Tambahkan card ke daftar
-    CoordList.appendChild(card);
-}
-
-// Tambahkan event listener ke tombol tambah
-addSieButton.addEventListener("click", addSie);
-
-// Tambahkan event listener untuk Enter key
-sieInput.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-        addSie();
+        coordList.appendChild(card);
     }
-});
+
+    // Fungsi Tambah Sie
+    addSieButton.addEventListener("click", () => {
+        const currentInput = document.getElementById(
+            `sie-input-${inputCounter}`
+        );
+        const sieValue = currentInput.value.trim();
+
+        if (sieValue) {
+            // Sembunyikan Input Saat Ini
+            currentInput.classList.add("hidden");
+
+            // Buat Chip Baru
+            const chip = document.createElement("div");
+            chip.className =
+                "chip flex items-center gap-2 bg-gray-200 px-4 py-2 rounded";
+            chip.setAttribute("data-input-id", `sie-input-${inputCounter}`);
+            chip.innerHTML = `
+        <span>${sieValue}</span>
+        <button class="delete-btn text-red-500 hover:text-white hover:bg-red-500 rounded-full px-1 border border-red-500">
+            &minus;
+        </button>
+        `;
+            sieList.appendChild(chip);
+
+            // Tambahkan Card
+            addCard(sieValue, `sie-input-${inputCounter}`);
+
+            // Tambahkan Input Baru
+            inputCounter++;
+            const newInput = document.createElement("input");
+            newInput.type = "text";
+            newInput.id = `sie-input-${inputCounter}`;
+            newInput.placeholder = "Tambah Sie yang dibutuhkan";
+            newInput.className =
+                "sie-input ml-4 px-4 py-2 w-full border rounded focus:outline-none";
+            inputContainer.appendChild(newInput);
+
+            // Event Hapus Chip
+            chip.querySelector(".delete-btn").addEventListener("click", () => {
+                const inputId = chip.getAttribute("data-input-id");
+                chip.remove();
+
+                // Hapus Card yang Terkait
+                const cardToRemove = coordList.querySelector(
+                    `[data-input-id="${inputId}"]`
+                );
+                if (cardToRemove) cardToRemove.remove();
+
+                // Hapus Input Field yang Terhubung
+                const inputFieldToRemove = document.getElementById(inputId);
+                if (inputFieldToRemove) inputFieldToRemove.remove();
+            });
+        }
+    });
 
 //Konfirmasi Tanggal Salah
 document.addEventListener("DOMContentLoaded", () => {
@@ -107,8 +111,8 @@ document.getElementById("add-agenda").addEventListener("click", function () {
     const newAgenda = document.querySelector("[data-agenda]").cloneNode(true);
 
     // Bersihkan nilai input pada elemen baru
-    newAgenda.querySelector('input[name="agenda_name[]"]').value = "";
-    newAgenda.querySelector('input[name="agenda_date[]"]').value = "";
+    newAgenda.querySelector('input[name="edit_agenda_name[]"]').value = "";
+    newAgenda.querySelector('input[name="edit_agenda_date[]"]').value = "";
 
     // Tambahkan ke daftar agenda
     agendaList.appendChild(newAgenda);
