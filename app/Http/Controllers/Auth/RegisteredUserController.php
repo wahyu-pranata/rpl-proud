@@ -12,13 +12,118 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
-use Storage;
 
 class RegisteredUserController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        switch (auth()->user()->organizationDetails()->value('organization_level'))
+        {
+            case 'university':
+                $queriedUsers = User::where('type', '=', 'student')->get();
+                return view('data_mhs', [
+                    'queriedUsers' => $queriedUsers,
+                    'faculties' => Faculty::all(),
+                    'majors' => Major::all(),
+                ]);
+
+            case 'faculty':
+                Session::flash('faculty_id', auth()->user()->id);
+                $queriedUsers = User::where('type', '=', 'student')
+                ->where('faculty_id', '=', auth()->user()->id)
+                ->get();
+                return view('data_mhs', data: [
+                    'queriedUsers' => $queriedUsers,
+                    'majors' => Major::where('faculty_id', '=', auth()->user()->faculty_id)->get()
+                ]);
+
+            case 'major':
+                $queriedUsers = User::where('type', '=', 'student')
+                ->where('major_id', '=', auth()->user()->id)
+                ->get();
+                return view('data_mhs', ['queriedUsers' => $queriedUsers]);
+        }
+    }
+
+    /**
+     * Display queried/searched users.
+     */
+    public function search(Request $request)
+    {
+
+
+        switch (auth()->user()->organizationDetails()->value('organization_level'))
+        {
+            case 'university':
+                $queriedUsers = User::when($request->faculty_id, function ($query, $facultyId) {
+                    $query->where('faculty_id', '=', $facultyId);
+                })->when($request->major_id, function ($query, $majorId) {
+                    $query->where('major_id', '=', $majorId);
+                })->when($request->search_term, function ($query, $searchTerm) {
+                    $query->where('name', 'LIKE', '%'.$searchTerm.'%');
+                })->where('type', '=', 'student')
+                ->get();
+
+                Session::flash('faculty_id', $request->faculty_id);
+                Session::flash('major_id', $request->major_id);
+                Session::flash('search_term', $request->search_term);
+
+                return view('data_mhs', [
+                    'queriedUsers' => $queriedUsers,
+                    'faculties' => Faculty::all(),
+                    'majors' => Major::all(),
+                ]);
+
+            case 'faculty':
+                $queriedUsers = User::where('faculty_id', '=', auth()->user()->faculty_id)
+                ->when($request->major_id, function ($query, $majorId) {
+                    $query->where('major_id', '=', $majorId);
+                })->when($request->search_term, function ($query, $searchTerm) {
+                    $query->where('name', 'LIKE', '%'.$searchTerm.'%');
+                })->where('type', '=', 'student')
+                ->get();
+
+                Session::flash('faculty_id', auth()->user()->faculty_id);
+                Session::flash('major_id', $request->major_id);
+                Session::flash('search_term', $request->search_term);
+
+                return view('data_mhs', [
+                    'queriedUsers' => $queriedUsers,
+                    'majors' => Major::where('faculty_id', '=', auth()->user()->faculty_id)->get()
+                ]);
+
+            case 'major':
+                $queriedUsers = User::where('faculty_id', '=', auth()->user()->faculty_id)
+                ->where('major_id', '=', auth()->user()->major_id)
+                ->when($request->search_term, function ($query, $searchTerm) {
+                    $query->where('name', 'LIKE', '%'.$searchTerm.'%');
+                })->where('type', '=', 'student')
+                ->get();
+
+                Session::flash('faculty_id', auth()->user()->faculty_id);
+                Session::flash('major_id', auth()->user()->major_id);
+                Session::flash('search_term', $request->search_term);
+
+                return view('data_mhs', ['queriedUsers' => $queriedUsers]);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
     /**
      * Display the registration view.
      */
@@ -77,5 +182,24 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(route('dashboard', absolute: false));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function verifyStudentProof(Request $request, string $id)
+    {
+        $affected = User::where('id', '=', $id)
+        ->update(['verified_by_major' => true]);
+
+        return redirect()->back();
+    }
+
+    public function unverifyStudentProof(Request $request, string $id)
+    {
+        $affected = User::where('id', '=', $id)
+        ->update(['verified_by_major' => false]);
+
+        return redirect()->back();
     }
 }
