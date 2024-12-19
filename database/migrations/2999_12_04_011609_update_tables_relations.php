@@ -15,6 +15,10 @@ return new class extends Migration
             $table->foreignId('faculty_id')->references('id')->on('faculties')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('major_id')->references('id')->on('majors')->onUpdate('cascade')->onDelete('cascade');
         });
+        Schema::table('events', function (Blueprint $table) {
+            $table->foreignId('faculty_id')->references('id')->on('faculties')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('major_id')->references('id')->on('majors')->onUpdate('cascade')->onDelete('cascade');
+        });
         Schema::table('organization_details', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
         });
@@ -28,8 +32,8 @@ return new class extends Migration
             $table->foreignId('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('permission_id')->references('id')->on('permissions')->onUpdate('cascade')->onDelete('cascade');
         });
-        Schema::table('event_division_roles', function (Blueprint $table) {
-            $table->foreignId('event_division_id')->references('id')->on('event_divisions')->onUpdate('cascade')->onDelete('cascade');
+        Schema::table('event_user_roles', function (Blueprint $table) {
+            $table->foreignId('event_user_id')->references('id')->on('event_users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('questions', function (Blueprint $table) {

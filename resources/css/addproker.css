@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* file upload */
+
+input[type="file"]{
+    @apply hidden
+}
+
+.upload-button:hover{
+    @apply bg-light-blue
+}
+
+.upload-button:hover .file-name{
+    @apply text-light-primary
+}
+
+.upload-button:hover svg path{
+    @apply fill-light-primary
+}
+
+.file-name{
+    @apply  text-ellipsis max-w-full
+}
+
+.file-label{
+    @apply my-[0.5em]
+}
+
+.upload-button{
+    @apply w-fit h-[3.2em] border-solid border-light-blue border-2 flex items-center justify-between rounded-lg px-[1em] text-light-blue space-x-2 mb-3 mt-2
+}
+
+.upload-button:active{
+    @apply border-transparent
+}

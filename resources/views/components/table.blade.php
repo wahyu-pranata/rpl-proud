@@ -1,9 +1,10 @@
+@props(['rows', 'headers', 'color'])
 <div id="terdaftar-section" class="relative mt-6">
   <div class="box-border w-full h-full bg-white rounded-lg shadow-md mb-6 overflow-hidden overflow-y-scroll">
     {{-- data table --}}
     <table class="w-full box-border">
       {{-- header --}}
-      <thead class="sticky top-0 bg-light-blue text-white">
+      <thead class="sticky top-0 bg-light-blue text-white" style="background-color: {{ $color }} ">
         <tr>
           @foreach ($headers as $header)
             <th class="text-left p-4">{{ $header }}</th>
@@ -17,7 +18,6 @@
             @foreach ($row as $cell)
               <td class="p-4">{{ $cell }}</td>
             @endforeach
-
             <td class="p-4 text-right">
               <button class="text-gray-primary hover:text-light-blue mr-2 transition">
                 <svg width="8" height="23" viewBox="0 0 8 26" xmlns="http://www.w3.org/2000/svg">

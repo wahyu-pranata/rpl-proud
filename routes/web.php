@@ -16,6 +16,30 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/event/candidates', function () {
+    return view('events.candidates');
+});
+
+Route::get('/addproker', function () {
+    return view('addproker');
+})->name('Tambah Proker');
+
+Route::get('/editproker', function () {
+    return view('editproker');
+})->name('Edit Proker');
+
+Route::get('/openrecruitment', function () {
+    return view('openrecruitment');
+})->name('Tambah Rekrutmen');
+
+Route::get('/editrecruitment', function () {
+    return view('editrecruitment');
+})->name('Edit Rekrutmen');
+
+Route::get('/editrecuitment', function () {
+    return view('editrecruitment');
+});
+
 Route::get('/kepanitiaan', function () {
     return view('proker.index');
 });
