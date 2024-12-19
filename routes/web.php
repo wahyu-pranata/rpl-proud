@@ -16,4 +16,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/kepanitiaan', function () {
+    return view('proker.index');
+});
+
 require __DIR__ . '/auth.php';
