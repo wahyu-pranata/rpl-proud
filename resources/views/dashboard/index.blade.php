@@ -2,14 +2,14 @@
 @section('title', 'Mahasiswa')
 
 @section('left-section')
-  <div class="px-4 py-8 flex gap-8 items-start border-dark-blue border-2 rounded-lg">
+  <div class="px-4 py-8 flex gap-8 items-start border-dark-blue border-2 rounded-lg relative">
     <div>
       <div class="flex gap-4 ">
         <div>
           <div class="bg-slate-400 rounded-full w-16 h-16">
           </div>
           <div>
-            <h2 class="text-xl font-bold max-w-40 text-nowrap overflow-hidden text-ellipsis hover:overflow-visible">
+            <h2 class="text-xl font-bold max-w-full text-nowrap overflow-hidden text-ellipsis hover:overflow-visible">
               {{ auth()->user()->name }}
             </h2>
           </div>
@@ -49,13 +49,17 @@
         </div>
       </div>
     </div>
-    <form action="{{ route('logout') }}" method="POST">
-      @csrf
-      <button type="submit"
-        class="border-2 border-red-500 text-red-500 px-4 py-2 hover:bg-red-500 hover:text-white rounded-lg">
-        Logout
-      </button>
-    </form>
+    <div class="flex gap-2 absolute top-8 right-4">
+      <a href="#"
+        class="border-2 border-slate-700 text-slate-700 px-4 py-2 hover:bg-slate-700 hover:text-white rounded-lg">Setting</a>
+      <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit"
+          class="border-2 border-red-500 text-red-500 px-4 py-2 hover:bg-red-500 hover:text-white rounded-lg">
+          Logout
+        </button>
+      </form>
+    </div>
   </div>
   @if (auth()->user()->type == 'organization')
     <h2 class="font-bold text-2xl">Data Anggota</h2>
