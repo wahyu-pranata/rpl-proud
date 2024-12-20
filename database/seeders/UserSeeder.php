@@ -233,5 +233,167 @@ class UserSeeder extends Seeder
             'organization_level' => 'major',
             'user_id' => $user->id,
         ]);
+
+        $user = User::factory()->create(attributes: [
+            'name' => 'Himpunan Mahasiswa Sosiologi',
+            'email' => 'himasos@ubud.ac.id',
+            'phone' => '0812345678',
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Ilmu Sosial dan Ilmu Politik')->value('id'),
+            'major_id' => Major::where('name', '=', 'Ilmu Sosiologi')->value('id'),
+            'type' => 'organization',
+        ]);
+        OrganizationDetails::create([
+            'organization_level' => 'major',
+            'user_id' => $user->id,
+        ]);
+
+        $user = User::factory()->create([
+            'name' => 'Himpunan Mahasiswa Ilmu Komunikasi',
+            'email' => 'himanika@ubud.ac.id',
+            'phone' => '0812345678',
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Ilmu Sosial dan Ilmu Politik')->value('id'),
+            'major_id' => Major::where('name', '=', 'Ilmu Komunikasi')->value('id'),
+            'type' => 'organization',
+        ]);
+        OrganizationDetails::create([
+            'organization_level' => 'major',
+            'user_id' => $user->id,
+        ]);
+
+
+        // Students (Ilmu Komunikasi)
+        $user = User::factory()->create([
+            'name' => 'Komunika Student 1',
+            'email' => 'komu1@student.unud.ac.id',
+            'phone' => '0812345678',
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Ilmu Sosial dan Ilmu Politik')->value('id'),
+            'major_id' => Major::where('name', '=', 'Ilmu Komunikasi')->value('id'),
+            'type' => 'student',
+        ]);
+        StudentDetails::create([
+            'nim' => '2308561001',
+            'student_proof' => 'student_proofs/student_proof-2308561001.pdf',
+            'verified_by_major' => 'unverified',
+            'user_id' => $user->id,
+        ]);
+
+        $user = User::factory()->create([
+            'name' => 'Komunika Student 2',
+            'email' => 'komu2@student.unud.ac.id',
+            'phone' => '0812345678',
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Ilmu Sosial dan Ilmu Politik')->value('id'),
+            'major_id' => Major::where('name', '=', 'Ilmu Komunikasi')->value('id'),
+            'type' => 'student',
+        ]);
+        StudentDetails::create([
+            'nim' => '2308561002',
+            'student_proof' => 'student_proofs/student_proof-2308561002.pdf',
+            'verified_by_major' => 'unverified',
+            'user_id' => $user->id,
+        ]);
+
+
+        // Students (Ilmu Sosiologi)
+        $user = User::factory()->create([
+            'name' => 'Sosio Student 1',
+            'email' => 'sosio1@student.unud.ac.id',
+            'phone' => '0812345678',
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Ilmu Sosial dan Ilmu Politik')->value('id'),
+            'major_id' => Major::where('name', '=', 'Ilmu Sosiologi')->value('id'),
+            'type' => 'student',
+        ]);
+        StudentDetails::create([
+            'nim' => '2308561011',
+            'student_proof' => 'student_proofs/student_proof-2308561011.pdf',
+            'verified_by_major' => 'unverified',
+            'user_id' => $user->id,
+        ]);
+
+        $user = User::factory()->create([
+            'name' => 'Sosio Student 2',
+            'email' => 'sosio2@student.unud.ac.id',
+            'phone' => '0812345678',
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Ilmu Sosial dan Ilmu Politik')->value('id'),
+            'major_id' => Major::where('name', '=', 'Ilmu Sosiologi')->value('id'),
+            'type' => 'student',
+        ]);
+        StudentDetails::create([
+            'nim' => '2308561012',
+            'student_proof' => 'student_proofs/student_proof-2308561012.pdf',
+            'verified_by_major' => 'unverified',
+            'user_id' => $user->id,
+        ]);
+
+        // Students (Informatika)
+        $user = User::factory()->create([
+            'name' => 'Infor Student 1',
+            'email' => 'infor1@student.unud.ac.id',
+            'phone' => '0812345678',
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Matematika dan Ilmu Pengetahuan Alam')->value('id'),
+            'major_id' => Major::where('name', '=', 'Informatika')->value('id'),
+            'type' => 'student',
+        ]);
+        StudentDetails::create([
+            'nim' => '2308561021',
+            'student_proof' => 'student_proofs/student_proof-2308561021.pdf',
+            'verified_by_major' => 'unverified',
+            'user_id' => $user->id,
+        ]);
+
+        $user = User::factory()->create([
+            'name' => 'Infor Student 2',
+            'email' => 'infor2@student.unud.ac.id',
+            'phone' => '0812345678',
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Matematika dan Ilmu Pengetahuan Alam')->value('id'),
+            'major_id' => Major::where('name', '=', 'Informatika')->value('id'),
+            'type' => 'student',
+        ]);
+        StudentDetails::create([
+            'nim' => '2308561022',
+            'student_proof' => 'student_proofs/student_proof-2308561022.pdf',
+            'verified_by_major' => 'unverified',
+            'user_id' => $user->id,
+        ]);
+
+        // Students (Biologi)
+        $user = User::factory()->create([
+            'name' => 'Bio Student 1',
+            'email' => 'bio1@student.unud.ac.id',
+            'phone' => '0812345678',
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Matematika dan Ilmu Pengetahuan Alam')->value('id'),
+            'major_id' => Major::where('name', '=', 'Biologi')->value('id'),
+            'type' => 'student',
+        ]);
+        StudentDetails::create([
+            'nim' => '2308561031',
+            'student_proof' => 'student_proofs/student_proof-2308561031.pdf',
+            'verified_by_major' => 'unverified',
+            'user_id' => $user->id,
+        ]);
+
+        $user = User::factory()->create([
+            'name' => 'Bio Student 2',
+            'email' => 'bio2@student.unud.ac.id',
+            'phone' => '0812345678',
+            'password' => Hash::make('password'),
+            'faculty_id' => Faculty::where('name', '=', 'Matematika dan Ilmu Pengetahuan Alam')->value('id'),
+            'major_id' => Major::where('name', '=', 'Biologi')->value('id'),
+            'type' => 'student',
+        ]);
+        StudentDetails::create([
+            'nim' => '2308561032',
+            'student_proof' => 'student_proofs/student_proof-2308561032.pdf',
+            'verified_by_major' => 'unverified',
+            'user_id' => $user->id,
+        ]);
     }
 }
