@@ -78,12 +78,14 @@ searchTerm: @js(session('search_term')), currentTab: @js(empty($currentTab) ? 't
             <main class="flex-1 p-6 h-[90%]">
                 <!-- navigation tabs -->
                 <div class="flex space-x-4">
-                    <a id="terdaftar-tab" class="hover:cursor-pointer" x-on:click="currentTab = 'terdaftar'"
-                    :class="currentTab == 'terdaftar' ? 'select-tab' : 'unselect-tab'">Terdaftar</a>
+                    <a href="{{ route('data_mhs.search', ['tab' => 'terdaftar', 'faculty_id' => session('faculty_id'), 'major_id' => session('major_id'), 'search_term' => session('search_term') ]) }}"
+                        id="terdaftar-tab" class="hover:cursor-pointer" x-on:click="currentTab = 'terdaftar'"
+                        :class="currentTab == 'terdaftar' ? 'select-tab' : 'unselect-tab'">Terdaftar</a>
 
                     @if (auth()->user()->organizationDetails()->value('organization_level') == 'major')
-                    <a id="pengajuan-tab" class="hover:cursor-pointer" x-on:click="currentTab = 'pengajuan'"
-                    :class="currentTab == 'pengajuan' ? 'select-tab' : 'unselect-tab'">Pengajuan</a>
+                    <a href="{{ route('data_mhs.search', ['tab' => 'pengajuan', 'faculty_id' => session('faculty_id'), 'major_id' => session('major_id'), 'search_term' => session('search_term') ]) }}"
+                        id="pengajuan-tab" class="hover:cursor-pointer" x-on:click="currentTab = 'pengajuan'"
+                        :class="currentTab == 'pengajuan' ? 'select-tab' : 'unselect-tab'">Pengajuan</a>
                     @endif
                 </div>
 
