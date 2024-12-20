@@ -32,7 +32,7 @@
                 </a>
                 @endif
             </div>
-            <a href="{{ route('dashboard') }}" class="flex py-4 items-center space-x-2 unselect-tab group">
+            <a href="{{ route('dashboard') }}" class="flex py-4 items-center space-x-2 group">
                 <div class="text-end group-hover:text-light-blue">
                     <div class="font-bold">{{ Auth::user()->name }}</div>
                     @if (Auth::user()->type == "student")
