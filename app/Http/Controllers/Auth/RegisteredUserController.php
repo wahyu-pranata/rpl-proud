@@ -28,7 +28,10 @@ class RegisteredUserController extends Controller
         switch (auth()->user()->organizationDetails()->value('organization_level'))
         {
             case 'university':
-                $queriedUsers = User::where('type', '=', 'student')->get();
+                $queriedUsers = User::join('student_details', 'users.id', '=', 'student_details.user_id')
+                ->select('users.*', 'student_details.nim', 'student_details.student_proof', 'student_details.verified_by_major')
+                ->where('type', '=', 'student')
+                ->get();
                 return view('data_mhs', [
                     'queriedUsers' => $queriedUsers,
                     'faculties' => Faculty::all(),
@@ -37,17 +40,22 @@ class RegisteredUserController extends Controller
 
             case 'faculty':
                 Session::flash('faculty_id', auth()->user()->id);
-                $queriedUsers = User::where('type', '=', 'student')
-                ->where('faculty_id', '=', auth()->user()->id)
+                $queriedUsers = User::join('student_details', 'users.id', '=', 'student_details.user_id')
+                ->select('users.*', 'student_details.nim', 'student_details.student_proof', 'student_details.verified_by_major')
+                ->where('users.type', '=', 'student')
+                ->where('users.faculty_id', '=', auth()->user()->faculty_id)
                 ->get();
+
                 return view('data_mhs', data: [
                     'queriedUsers' => $queriedUsers,
                     'majors' => Major::where('faculty_id', '=', auth()->user()->faculty_id)->get()
                 ]);
 
             case 'major':
-                $queriedUsers = User::where('type', '=', 'student')
-                ->where('major_id', '=', auth()->user()->id)
+                $queriedUsers = User::join('student_details', 'users.id', '=', 'student_details.user_id')
+                ->select('users.*', 'student_details.nim', 'student_details.student_proof', 'student_details.verified_by_major')
+                ->where('major_id', '=', auth()->user()->major_id)
+                ->where('type', '=', 'student')
                 ->get();
                 return view('data_mhs', ['queriedUsers' => $queriedUsers]);
         }
@@ -63,7 +71,9 @@ class RegisteredUserController extends Controller
         switch (auth()->user()->organizationDetails()->value('organization_level'))
         {
             case 'university':
-                $queriedUsers = User::when($request->faculty_id, function ($query, $facultyId) {
+                $queriedUsers = User::join('student_details', 'users.id', '=', 'student_details.user_id')
+                ->select('users.*', 'student_details.nim', 'student_details.student_proof', 'student_details.verified_by_major')
+                ->when($request->faculty_id, function ($query, $facultyId) {
                     $query->where('faculty_id', '=', $facultyId);
                 })->when($request->major_id, function ($query, $majorId) {
                     $query->where('major_id', '=', $majorId);
@@ -80,15 +90,18 @@ class RegisteredUserController extends Controller
                     'queriedUsers' => $queriedUsers,
                     'faculties' => Faculty::all(),
                     'majors' => Major::all(),
+                    'currentTab' => $request->tab,
                 ]);
 
             case 'faculty':
-                $queriedUsers = User::where('faculty_id', '=', auth()->user()->faculty_id)
+                $queriedUsers = User::join('student_details', 'users.id', '=', 'student_details.user_id')
+                ->select('users.*', 'student_details.nim', 'student_details.student_proof', 'student_details.verified_by_major')
+                ->where('users.faculty_id', '=', auth()->user()->faculty_id)
                 ->when($request->major_id, function ($query, $majorId) {
-                    $query->where('major_id', '=', $majorId);
+                    $query->where('users.major_id', '=', $majorId);
                 })->when($request->search_term, function ($query, $searchTerm) {
-                    $query->where('name', 'LIKE', '%'.$searchTerm.'%');
-                })->where('type', '=', 'student')
+                    $query->where('users.name', 'LIKE', '%'.$searchTerm.'%');
+                })->where('users.type', '=', 'student')
                 ->get();
 
                 Session::flash('faculty_id', auth()->user()->faculty_id);
@@ -97,22 +110,25 @@ class RegisteredUserController extends Controller
 
                 return view('data_mhs', [
                     'queriedUsers' => $queriedUsers,
+                    'currentTab' => $request->tab,
                     'majors' => Major::where('faculty_id', '=', auth()->user()->faculty_id)->get()
                 ]);
 
             case 'major':
-                $queriedUsers = User::where('faculty_id', '=', auth()->user()->faculty_id)
-                ->where('major_id', '=', auth()->user()->major_id)
+                $queriedUsers = User::join('student_details', 'users.id', '=', 'student_details.user_id')
+                ->select('users.*', 'student_details.nim', 'student_details.student_proof', 'student_details.verified_by_major')
+                ->where('users.faculty_id', '=', auth()->user()->faculty_id)
+                ->where('users.major_id', '=', auth()->user()->major_id)
                 ->when($request->search_term, function ($query, $searchTerm) {
-                    $query->where('name', 'LIKE', '%'.$searchTerm.'%');
-                })->where('type', '=', 'student')
+                    $query->where('users.name', 'LIKE', '%'.$searchTerm.'%');
+                })->where('users.type', '=', 'student')
                 ->get();
 
                 Session::flash('faculty_id', auth()->user()->faculty_id);
                 Session::flash('major_id', auth()->user()->major_id);
                 Session::flash('search_term', $request->search_term);
 
-                return view('data_mhs', ['queriedUsers' => $queriedUsers]);
+                return view('data_mhs', ['queriedUsers' => $queriedUsers, 'currentTab' => $request->tab]);
         }
     }
 
@@ -189,17 +205,17 @@ class RegisteredUserController extends Controller
      */
     public function verifyStudentProof(Request $request, string $id)
     {
-        $affected = User::where('id', '=', $id)
-        ->update(['verified_by_major' => true]);
+        $studentDetails = StudentDetails::where('user_id', '=', $id);
+        $affected = $studentDetails->update(['verified_by_major' => 'verified']);
 
-        return redirect()->back();
+        return back(303);
     }
 
-    public function unverifyStudentProof(Request $request, string $id)
+    public function rejectStudentProof(Request $request, string $id)
     {
-        $affected = User::where('id', '=', $id)
-        ->update(['verified_by_major' => false]);
+        $studentDetails = StudentDetails::where('user_id', '=', $id);
+        $affected = $studentDetails->update(['verified_by_major' => 'rejected']);
 
-        return redirect()->back();
+        return back(303);
     }
 }

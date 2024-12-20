@@ -13,7 +13,7 @@ Route::get('/', function () {
 Route::get('/data_mhs', [RegisteredUserController::class, 'index'])->middleware(['auth', 'verified', EnsureUserType::class.':organization'])->name('data_mhs');
 Route::get('/data_mhs/search', [RegisteredUserController::class, 'search'])->middleware(['auth', 'verified', EnsureUserType::class.':organization'])->name('data_mhs.search');
 Route::patch('/data_mhs/{id}/verify_student_proof', [RegisteredUserController::class, 'verifyStudentProof'])->middleware(['auth', 'verified', EnsureUserType::class.':organization'])->name('data_mhs.verify_student_proof');
-Route::patch('/data_mhs/{id}/unverify_student_proof', [RegisteredUserController::class, 'unverifyStudentProof'])->middleware(['auth', 'verified', EnsureUserType::class.':organization'])->name('data_mhs.unverify_student_proof');
+Route::patch('/data_mhs/{id}/reject_student_proof', [RegisteredUserController::class, 'rejectStudentProof'])->middleware(['auth', 'verified', EnsureUserType::class.':organization'])->name('data_mhs.reject_student_proof');
 
 Route::get('/data_panitia', function () {
     return view('data_panitia');
