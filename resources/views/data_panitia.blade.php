@@ -6,31 +6,14 @@
     <title>Data Panitia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     @vite('resources/css/navbar.css')
-    @vite('resources/js/navbar.js')
 </head>
 <body class="bg-gray-100 box-border h-screen">
-    <div class="flex flex-col h-full">
-        <!-- header -->
-        <x-pageheader
-            :tabs="[
-                ['label' => 'Broadcast',
-                 'icon_path' => 'M9.348 14.652a3.75 3.75 0 0 1 0-5.304m5.304 0a3.75 3.75 0 0 1 0 5.304m-7.425 2.121a6.75 6.75 0 0 1 0-9.546m9.546 0a6.75 6.75 0 0 1 0 9.546M5.106 18.894c-3.808-3.807-3.808-9.98 0-13.788m13.788 0c3.808 3.807 3.808 9.98 0 13.788M12 12h.008v.008H12V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z',
-                 'icon_class' => 'unselect-tab'
-                ],
-                ['label' => 'Mahasiswa',
-                 'icon_path' => 'M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z',
-                 'icon_class' => 'unselect-tab'
-                ]
-            ]"
-            dbtop="Organisasi Mahasiswa"
-            dbbottom="Lingkup Organisasi"
-         />
-
-        <div class="flex flex-1 h-[85%]">
+        <x-navbar />
+        <div class="flex flex-1 h-full">
             <!-- sidebar -->
             <aside class="w-96 bg-white border-r h-full overflow-hidden">
                 <div class="px-6 pt-4">
-                    <a href="#" class="flex items-center space-x-2 text-lg font-semibold">
+                    <a href="javascript:history.back()" class="flex items-center space-x-2 text-lg font-semibold">
                         <svg width="23" height="23" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19.5322 25L7.46771 13.6452L19.5322 3" stroke="#1E1E1E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -66,7 +49,7 @@
                 <!-- navigation tabs -->
                 <div class="text-gray-100 border-b-2 border-gray-100">.</div>
                 <!-- terdaftar content -->
-                <x-table :headers="['Nama', 'NIM', 'Bidang', 'Jabatan', '']"
+                <x-table color="#679ce4" :headers="['Nama', 'NIM', 'Bidang', 'Jabatan', '']"
                     :rows="[
                         ['Gede Nicholas Tejasukmana Putra', '2308561074', 'Informatika', 'Student Innovation Centre'],
                         ['Bayu Fadjar Dwi Putra', '2308561080', 'Informatika', 'Free Lance'],
@@ -79,58 +62,7 @@
                         ['Gede Nicholas Tejasukmana Putra', '2308561074', 'Informatika', 'Student Innovation Centre'],
                         ['Gede Nicholas Tejasukmana Putra', '2308561074', 'Informatika', 'Student Innovation Centre']
                     ]"
-                    tableID="terdaftar-section"
-                 />
-
-                <!-- pengajuan content -->
-                <x-datacard :rows="[
-                    [
-                        'name' => 'Gede Nicholas Tejasukmana Putra',
-                        'nim' => '2308561074',
-                        'details' => [
-                            ['label' => 'No.Telp', 'value' => '08123456789'],
-                            ['label' => 'Email', 'value' => 'mahasiswa.2308561074@student.unud.ac.id'],
-                            ['label' => 'Program Studi', 'value' => 'Informatika'],
-                        ]
-                    ],
-                    [
-                        'name' => 'Bayu Fadjar Dwi Putra',
-                        'nim' => '2308561080',
-                        'details' => [
-                            ['label' => 'No.Telp', 'value' => '08198765432'],
-                            ['label' => 'Email', 'value' => 'mahasiswa.2308561080@student.unud.ac.id'],
-                            ['label' => 'Program Studi', 'value' => 'Informatika'],
-                        ]
-                    ],
-                    [
-                        'name' => 'Bayu Fadjar Dwi Putra',
-                        'nim' => '2308561080',
-                        'details' => [
-                            ['label' => 'No.Telp', 'value' => '08198765432'],
-                            ['label' => 'Email', 'value' => 'mahasiswa.2308561080@student.unud.ac.id'],
-                            ['label' => 'Program Studi', 'value' => 'Informatika'],
-                        ]
-                    ],
-                    [
-                        'name' => 'Bayu Fadjar Dwi Putra',
-                        'nim' => '2308561080',
-                        'details' => [
-                            ['label' => 'No.Telp', 'value' => '08198765432'],
-                            ['label' => 'Email', 'value' => 'mahasiswa.2308561080@student.unud.ac.id'],
-                            ['label' => 'Program Studi', 'value' => 'Informatika'],
-                        ]
-                    ],
-                    [
-                        'name' => 'Bayu Fadjar Dwi Putra',
-                        'nim' => '2308561080',
-                        'details' => [
-                            ['label' => 'No.Telp', 'value' => '08198765432'],
-                            ['label' => 'Email', 'value' => 'mahasiswa.2308561080@student.unud.ac.id'],
-                            ['label' => 'Program Studi', 'value' => 'Informatika'],
-                        ]
-                    ],
-                ]"
-                tableID="pengajuan-section" />
+                />
             </main>
         </div>
     </div>

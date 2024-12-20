@@ -16,7 +16,7 @@ x-data="{selectedFacultyId: @js(session('faculty_id')), selectedMajorId: @js(ses
 searchTerm: @js(session('search_term')), currentTab: @js(empty($currentTab) ? 'terdaftar' : $currentTab)}">
     <x-navbar />
     <div class="flex flex-col h-full">
-        <div class="flex flex-1 h-[85%]">
+        <div class="flex flex-1">
             <!-- sidebar -->
             <form action="{{ route('data_mhs.search') }}" method="GET" enctype="application/x-www-form-urlencoded">
                 <aside class="w-96 bg-white border-r h-full overflow-hidden">
