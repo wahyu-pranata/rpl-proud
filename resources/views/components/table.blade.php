@@ -1,10 +1,20 @@
-@props(['rows', 'headers', 'color'])
-<div id="terdaftar-section" class="relative mt-6">
-  <div class="box-border w-full h-full bg-white rounded-lg shadow-md mb-6 overflow-hidden overflow-y-scroll">
+@props(['rows', 'headers', 'color', 'data' => 'fit'])
+
+@php
+    $calculatedHeight = $data !== 'fit'
+        ? ((float) $data * 63.67 + 56.33) . 'px'
+        : 'none';
+@endphp
+
+<div id="terdaftar-section"
+     class="relative mt-6"
+     style="--max-height: {{ $calculatedHeight }};">
+  <div class="box-border w-full bg-white rounded-lg shadow-md mb-6 overflow-hidden overflow-y-auto"
+       style="max-height: var(--max-height);">
     {{-- data table --}}
-    <table class="w-full box-border">
+    <table class="w-full">
       {{-- header --}}
-      <thead class="sticky top-0 bg-light-blue text-white" style="background-color: {{ $color }} ">
+      <thead class="sticky top-0 bg-light-blue text-white" style="background-color: {{ $color }}">
         <tr>
           @foreach ($headers as $header)
             <th class="text-left p-4">{{ $header }}</th>

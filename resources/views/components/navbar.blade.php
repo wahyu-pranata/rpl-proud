@@ -2,7 +2,7 @@
 {{-- <x-navbar>('guest', 'admin' or 'mahasiswa' or set it empty for default)</x-navbar> --}}
 
 @props(['auth' => 'anonymous'])
-<nav class="flex w-full min-h-[76px] items-center justify-between bg-white px-10 shadow z-10">
+<nav class="box-border fixed flex w-full min-h-[76px] items-center justify-between bg-white px-10 shadow z-10">
   <a href="/" class="text-xl font-bold text-dark-secondary">Proud</a>
   {{-- tabs --}}
 
