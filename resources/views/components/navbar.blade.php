@@ -53,4 +53,3 @@
         @endguest
     </div>
 </nav>
-
