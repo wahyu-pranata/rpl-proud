@@ -11,10 +11,6 @@ table thead tr {
   @apply rounded-lg
 }
 
-table thead tr th {
-  @apply rounded-lg
-}
-
 .calendar-container {
   @apply w-[400px] bg-white rounded-lg shadow-xl mt-8 border-dark-blue border-2;
 }

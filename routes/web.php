@@ -61,4 +61,12 @@ Route::get('/editrecuitment', function () {
     return view('editrecruitment');
 });
 
+Route::get('/kepanitiaan', function () {
+    return view('proker.index');
+});
+
+Route::get('/data_mhs', function () {
+    return view('data_mhs');
+});
+
 require __DIR__ . '/auth.php';
