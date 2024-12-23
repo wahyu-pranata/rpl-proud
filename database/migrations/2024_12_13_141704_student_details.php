@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nim');
             $table->string('student_proof');
-            $table->boolean('verified_by_major');
+            $table->enum('verified_by_major', ['verified', 'unverified', 'rejected']);
             $table->timestamps();
         });
     }
