@@ -52,7 +52,7 @@
             <span class="text-lg font-medium text-dark-secondary group-hover:text-light-blue"
               for="">Broadcast</span>
           </a>
-          <a href="" class="flex py-7 px-2 group">
+          <a href="/data_mhs" class="flex py-7 px-2 group">
             <svg class="w-6 mr-3 fill-dark-secondary group-hover:fill-light-blue" viewBox="0 0 35 29"
               xmlns="http://www.w3.org/2000/svg">
               <path
