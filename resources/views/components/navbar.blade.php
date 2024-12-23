@@ -43,7 +43,15 @@
     <div class="flex items-center space-x-6">
       @auth
         @if (auth()->user()->type == 'organization')
-          <a href="" class="flex py-7 px-2 group">
+          {{-- <a href="" class="flex py-7 px-2 group"> --}}
+          {{-- <svg class="w-6 mr-3 fill-dark-secondary group-hover:fill-light-blue" viewBox="0 0 31 29"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M15.4998 12.5832C13.8957 12.5832 12.5832 13.8957 12.5832 15.4998C12.5832 17.104 13.8957 18.4165 15.4998 18.4165C17.104 18.4165 18.4165 17.104 18.4165 15.4998C18.4165 13.8957 17.104 12.5832 15.4998 12.5832ZM24.2498 15.4998C24.2498 10.6873 20.3123 6.74984 15.4998 6.74984C10.6873 6.74984 6.74984 10.6873 6.74984 15.4998C6.74984 18.7082 8.49984 21.479 11.1248 23.0832L12.5832 20.604C10.8332 19.5832 9.6665 17.6873 9.6665 15.6457C9.6665 12.4373 12.2915 9.81234 15.4998 9.81234C18.7082 9.81234 21.3332 12.4373 21.3332 15.6457C21.3332 17.8332 20.1665 19.729 18.4165 20.604L19.8748 23.0832C22.4998 21.6248 24.2498 18.7082 24.2498 15.4998ZM15.4998 0.916504C7.479 0.916504 0.916504 7.479 0.916504 15.4998C0.916504 20.8957 3.83317 25.5623 8.20817 28.0415L9.6665 25.5623C6.1665 23.5207 3.83317 19.729 3.83317 15.4998C3.83317 9.08317 9.08317 3.83317 15.4998 3.83317C21.9165 3.83317 27.1665 9.08317 27.1665 15.4998C27.1665 19.8748 24.8332 23.5207 21.3332 25.5623L22.7915 28.0415C27.1665 25.5623 30.0832 20.8957 30.0832 15.4998C30.0832 7.479 23.5207 0.916504 15.4998 0.916504Z" />
+            </svg>
+            <span class="text-lg font-medium text-dark-secondary group-hover:text-light-blue"
+              for="">Broadcast</span> --}}
+          <button id="pop" class="relative" onclick="popUp()">
             <svg class="w-6 mr-3 fill-dark-secondary group-hover:fill-light-blue" viewBox="0 0 31 29"
               xmlns="http://www.w3.org/2000/svg">
               <path
@@ -51,7 +59,8 @@
             </svg>
             <span class="text-lg font-medium text-dark-secondary group-hover:text-light-blue"
               for="">Broadcast</span>
-          </a>
+          </button>
+          {{-- </a> --}}
           <a href="" class="flex py-7 px-2 group">
             <svg class="w-6 mr-3 fill-dark-secondary group-hover:fill-light-blue" viewBox="0 0 35 29"
               xmlns="http://www.w3.org/2000/svg">
