@@ -13,9 +13,20 @@ Route::get('/', function () {
 Route::get('/data_mhs', function () {
     return redirect()->to("/data_mhs/search?tab=terdaftar");
 })->middleware(['auth', 'verified', EnsureUserType::class.':organization'])->name('data_mhs');
+
 Route::get('/data_mhs/search', [RegisteredUserController::class, 'search'])->middleware(['auth', 'verified', EnsureUserType::class.':organization'])->name('data_mhs.search');
-Route::patch('/data_mhs/{id}/verify_student_proof', [RegisteredUserController::class, 'verifyStudentProof'])->middleware(['auth', 'verified', EnsureUserType::class.':organization'])->name('data_mhs.verify_student_proof');
-Route::patch('/data_mhs/{id}/reject_student_proof', [RegisteredUserController::class, 'rejectStudentProof'])->middleware(['auth', 'verified', EnsureUserType::class.':organization'])->name('data_mhs.reject_student_proof');
+
+Route::patch('/data_mhs/{id}/verify_student_proof', [RegisteredUserController::class, 'verifyStudentProof'])
+->middleware(['auth', 'verified', EnsureUserType::class.':organization'])
+->name('data_mhs.verify_student_proof');
+
+Route::patch('/data_mhs/{id}/reject_student_proof', [RegisteredUserController::class, 'rejectStudentProof'])
+->middleware(['auth', 'verified', EnsureUserType::class.':organization'])
+->name('data_mhs.reject_student_proof');
+
+Route::get('/data_mhs/{id}/download_student_details', [RegisteredUserController::class, 'downloadStudentDetails'])
+->middleware(['auth', 'verified', EnsureUserType::class.':organization'])
+->name('data_mhs.download_student_details');
 
 Route::get('/data_panitia', function () {
     return view('data_panitia');
@@ -63,10 +74,6 @@ Route::get('/editrecuitment', function () {
 
 Route::get('/kepanitiaan', function () {
     return view('proker.index');
-});
-
-Route::get('/data_mhs', function () {
-    return view('data_mhs');
 });
 
 require __DIR__ . '/auth.php';

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class RegisteredUserController extends Controller
 {
@@ -128,7 +129,10 @@ class RegisteredUserController extends Controller
                 Session::flash('major_id', auth()->user()->major_id);
                 Session::flash('search_term', $request->search_term);
 
-                return view('data_mhs', ['queriedUsers' => $queriedUsers, 'currentTab' => $request->tab]);
+                return view('data_mhs', [
+                    'queriedUsers' => $queriedUsers,
+                    'currentTab' => $request->tab,
+                ]);
         }
     }
 
@@ -217,5 +221,21 @@ class RegisteredUserController extends Controller
         $affected = $studentDetails->update(['verified_by_major' => 'rejected']);
 
         return back(303);
+    }
+
+
+    /**
+     * Download student details
+     */
+    public function downloadStudentDetails(Request $request, $id)
+    {
+        $student = User::where('id', '=', $request->route('id'))->first();
+        if (Auth::user()->major_id == $student->major_id) {
+            $studentDetails = StudentDetails::where('user_id', '=', $id);
+            return Storage::download($studentDetails->value('student_proof'));
+        } else {
+            abort(403, "Access denied");
+            return redirect('errors/403');
+        }
     }
 }
