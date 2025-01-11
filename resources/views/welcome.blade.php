@@ -15,7 +15,7 @@
 
 <body>
   <div class="font-hind ">
-    <x-navbar auth='admin'></x-navbar>
+    <x-navbar></x-navbar>
     <div class="relative w-screen h-[36em] overflow-hidden">
       <div class="absolute inset-0 bg-black bg-opacity-30"></div>
       <div class="absolute h-[60%] w-1 bg-light-primary left-[6em]"></div>
