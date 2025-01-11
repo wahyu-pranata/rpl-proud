@@ -2,7 +2,7 @@
 {{-- <x-navbar>('guest', 'admin' or 'mahasiswa' or set it empty for default)</x-navbar> --}}
 
 @props(['auth' => 'anonymous'])
-<nav class="box-border fixed flex w-full min-h-[76px] items-center justify-between bg-white px-10 shadow z-10">
+<nav class="box-border fixed flex w-full min-h-[76px] items-center justify-between bg-white px-10 shadow z-10 top-0 font-hind">
   <a href="/" class="text-xl font-bold text-dark-secondary">Proud</a>
   {{-- tabs --}}
 
@@ -40,7 +40,7 @@
     ];
   @endphp
   <div class="flex items-center space-x-12">
-    <div class="flex items-center space-x-6">
+    <div class="flex items-center space-x-6 font-hind">
       @auth
         @if (auth()->user()->type == 'organization')
           <a href="" class="flex py-7 px-2 group">
@@ -75,7 +75,7 @@
           </a>
         @endif
       </div>
-      <a href="dashboard" class="flex py-4 items-center space-x-2 unselect-tab group">
+      <a href="/dashboard" class="flex py-4 items-center space-x-2 group font-hind">
         <div class="text-end group-hover:text-light-blue">
           <div class="font-bold">{{ Auth::user()->name }}</div>
           @if (Auth::user()->type == 'student')
