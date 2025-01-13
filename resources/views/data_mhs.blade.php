@@ -7,9 +7,10 @@
     <title>Data Mahasiswa</title>
     <script src="https://cdn.tailwindcss.com"></script>
     @vite('resources/js/app.js')
+    @vite('resources/css/app.css')
     @vite('resources/css/navbar.css')
 </head>
-<body class="bg-gray-100 box-border h-screen"
+<body class="bg-gray-100 box-border h-screen pt-20 font-hind"
 x-init="selectedFacultyId = @js(session('faculty_id')); selectedMajorId = @js(session('major_id'));
 searchTerm = @js(session('search_term')); currentTab = @js(empty($currentTab) ? 'terdaftar' : $currentTab);"
 x-data="{selectedFacultyId: @js(session('faculty_id')), selectedMajorId: @js(session('major_id')),
@@ -19,7 +20,7 @@ searchTerm: @js(session('search_term')), currentTab: @js(empty($currentTab) ? 't
         <div class="flex flex-1">
             <!-- sidebar -->
             <form action="{{ route('data_mhs.search') }}" method="GET" enctype="application/x-www-form-urlencoded">
-                <aside class="w-96 bg-white border-r h-full overflow-hidden">
+                <aside class="w-96 bg-white border-r h-full overflow-hidden pt-8">
                     <input type="hidden" name="tab" x-bind:value="currentTab">
                     <div class="px-6 pt-4">
                         <a href="javascript:history.back()" class="flex items-center space-x-2 text-lg font-semibold">
@@ -75,7 +76,7 @@ searchTerm: @js(session('search_term')), currentTab: @js(empty($currentTab) ? 't
 
 
             <!-- main Content -->
-            <main class="flex-1 p-6 h-[90%]">
+            <main class="flex-1 p-6 h-[90%] pt-12">
                 <!-- navigation tabs -->
                 <div class="flex space-x-4">
                     <a href="{{ route('data_mhs.search', ['tab' => 'terdaftar', 'faculty_id' => session('faculty_id'), 'major_id' => session('major_id'), 'search_term' => session('search_term') ]) }}"
