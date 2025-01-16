@@ -11,7 +11,7 @@
     <div class="flex items-center space-x-6 font-hind" x-data="">
       @auth
         @if (auth()->user()->type == 'organization')
-          <Broadcast csrf-token="{{ csrf_token() }}" submit-route="{{ route('broadcast.storeBroadcast') }}" open-button-class="flex py-7 px-2 group">
+          <Broadcast csrf-token="{{ csrf_token() }}" submit-route="{{ route('message.storeBroadcast') }}" open-button-class="flex py-7 px-2 group">
               <svg class="w-6 mr-3 fill-dark-secondary group-hover:fill-light-blue" viewBox="0 0 31 29"
                 xmlns="http://www.w3.org/2000/svg">
                 <path

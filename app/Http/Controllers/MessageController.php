@@ -16,7 +16,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
-class BroadcastController extends Controller
+class MessageController extends Controller
 {
     public function storeBroadcast(Request $request)
     {
