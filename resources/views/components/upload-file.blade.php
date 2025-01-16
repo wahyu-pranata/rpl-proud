@@ -13,5 +13,5 @@
         </svg>
         <label class="file-name group-hover:text-light-primary" for="{{ $id }}">Upload File</label>
     </button>
-    <input id="{{ $id }}" name="{{ $name }}" class="file-input hidden" required type="file" accept=".pdf">
+    <input id="{{ $id }}" name="{{ $name }}" class="file-input hidden" required type="file">
 </div>
