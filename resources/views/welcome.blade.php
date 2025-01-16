@@ -13,7 +13,7 @@
   @vite('resources/js/dropdown.js')
 </head>
 
-<body>
+<body id="app">
   <div class="font-hind ">
     <x-navbar></x-navbar>
     <div class="relative w-screen h-[36em] overflow-hidden">

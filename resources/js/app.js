@@ -7,6 +7,8 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { createApp } from 'vue';
+import Broadcast from './components/Broadcast.vue';
 
 
 window.Alpine = Alpine;
@@ -22,3 +24,7 @@ var swiper = new Swiper(".mySwiper", {
     },
     slidesOffsetBefore: 40, // Tambahkan offset di awal
 });
+
+createApp({})
+  .component('Broadcast', Broadcast)
+  .mount('#app')

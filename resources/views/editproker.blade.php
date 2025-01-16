@@ -5,11 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tambah Proker</title>
+  @vite('resources/js/app.js')
+  @vite('resources/css/app.css')
   @vite(['resources/css/editproker.css', 'resources/js/editproker.js', 'resources/js/upload_file.js'])
 
 </head>
 
-<body class="font-hind">
+<body id="app" class="font-hind">
   <nav>
     <!-- Tombol Panah Kiri -->
     <button onclick="goBack()" class="p-4 bg-gray-200 rounded-full hover:bg-gray-300">
@@ -171,6 +173,7 @@
     </script>
 
   </article>
+@stack('scripts')
 </body>
 
 </html>

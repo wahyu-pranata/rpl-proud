@@ -9,9 +9,9 @@
   @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/dashboard.css'])
 </head>
 
-<body class="font-hind">
+<body id="app" class="font-hind">
   <!-- header -->
-  <x-navbar auth="admin" />
+  <x-navbar/>
   <main class="px-12 pt-28 ">
     <h1 class="text-3xl font-bold tracking-wider">Dashboard</h1>
     <div class="flex flex-col md:flex-row gap-8 mt-8">
@@ -23,7 +23,9 @@
       </section>
     </div>
     @yield('content')
-  </main>
+    </main>
+
+    @stack('scripts')
 </body>
 
 </html>

@@ -5,26 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tambah Proker</title>
-  @vite(['resources/css/addproker.css', 'resources/js/addproker.js', 'resources/js/upload_file.js'])
+  @vite(['resources/css/addproker.css', 'resources/js/addproker.js', 'resources/js/upload_file.js', 'resources/js/app.js', 'resources/css/app.css'])
 
 </head>
 
-<body class="font-hind">
-  <nav>
-    <!-- Tombol Panah Kiri -->
-    <a href="/">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-        class="w-6 h-6 text-black">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-      </svg>
-    </a>
-    {{-- <button onclick="goBack()" class="p-4 bg-gray-200 rounded-full hover:bg-gray-300">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-        class="w-6 h-6 text-black">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-      </svg>
-    </button> --}}
-  </nav>
+<body id="app" class="font-hind pt-36">
+  <x-navbar></x-navbar>
   <header>
     <div class="flex justify-center">
       <h1 class="font-bold text-4xl tracking-widest">MEMBUAT KEPANITIAAN</h1>
@@ -43,8 +29,9 @@
           class="block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border-2 border-gray-500 hover:border-black appearance-none dark:border-gray-500 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" " />
         <label for="nama_kepanitiaan"
-          class="absolute text-sm text-gray-500 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nama
-          Kepanitiaan</label>
+          class="absolute text-sm text-gray-500 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nama
+          Kepanitiaan
+        </label>
       </div>
 
       <!-- Input Deskripsi Kegiatan -->
@@ -53,7 +40,7 @@
           class="block px-2.5 pb-2.5 pt-4 w-full resize-none text-sm rounded-lg border-2 border-gray-500 hover:border-black appearance-none dark:border-gray-500 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "></textarea>
         <label for="deskripsi_kegiatan"
-          class="absolute text-sm text-gray-500 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-5 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Deskripsi
+          class="absolute text-sm text-gray-500 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-5 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Deskripsi
           Kegiatan</label>
       </div>
     </form>
@@ -149,19 +136,24 @@
     <x-upload-file name="jobdesk" id='(id)'>File Jobdesk</x-upload-file>
 
     <h1 class="font-semibold text-4xl mb-6 mt-10 tracking-widest">Undangan</h1>
-    <h2 class="font-semibold text-gray-600 text-2xl my-4 tracking-widest">Inti</h2>
-
-    <x-invitation-list />
-
-    <h2 class="font-semibold text-gray-600 text-2xl my-4 tracking-widest">Koordinator</h2>
-
-    <div id="CoordList" class="mb-4 w-1/2"></div>
+    <div class="flex flex-row">
+        <div class="w-1/2 mr-12">
+            <h2 class="font-semibold text-gray-600 text-2xl my-4 tracking-widest">Inti</h2>
+            <x-invitation-list />
+        </div>
+        <div class="w-1/2">
+            <h2 class="font-semibold text-gray-600 text-2xl my-4 tracking-widest">Koordinator</h2>
+            <div id="CoordList" class="mb-4 w-1/2"></div>
+        </div>
+    </div>
 
     <!-- Tombol Unggah -->
     <div class="flex items-center flex-col">
       <input type="submit" value="Unggah"
         class="bg-blue-900 text-white font-semibold mb-24 py-2 px-6 rounded-lg cursor-pointer hover:bg-blue-700">
   </article>
+@stack('scripts')
 </body>
+
 
 </html>
