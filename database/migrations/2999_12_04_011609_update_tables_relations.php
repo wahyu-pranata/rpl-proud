@@ -48,7 +48,7 @@ return new class extends Migration
         });
         Schema::table('messages', function (Blueprint $table) {
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('event_id')->references('id')->on('events')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('event_id')->references('id')->on('events')->onUpdate('cascade')->onDelete('cascade')->nullable();
         });
         Schema::table('invitations', function (Blueprint $table) {
             $table->foreignId('target_user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
