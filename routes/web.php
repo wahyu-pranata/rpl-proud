@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BroadcastController;
 use App\Http\Middleware\EnsureUserType;
 use Illuminate\Support\Facades\Route;
 
@@ -75,5 +76,9 @@ Route::get('/editrecuitment', function () {
 Route::get('/kepanitiaan', function () {
     return view('proker.index');
 });
+
+Route::post('/storeBroadcast', [BroadcastController::class, 'storeBroadCast'])
+// ->middleware(['auth', 'verified', EnsureUserType::class.':organization'])
+->name('broadcast.storeBroadcast');
 
 require __DIR__ . '/auth.php';
