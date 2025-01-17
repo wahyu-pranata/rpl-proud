@@ -12,7 +12,9 @@
   <x-navbar></x-navbar>
   <header>
     <div class="flex justify-center">
-      <h1 class="font-bold text-4xl tracking-widest">MEMBUAT KEPANITIAAN</h1>
+      <h1 class="font-bold text-4xl tracking-widest">MENGEDIT KEPANITIAAN</h1>
+      {{ nl2br(e("\n")) }}
+      <p class="font-bold text-4xl tracking-widest">{{ $eventName }}</p>
     </div>
   </header>
   <div class="mx-60 my-20">

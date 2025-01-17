@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    @vite('resources/css/app.css')
     @vite('resources/js/dropdown.js')
     <title>Document</title>
 </head>
-<body class="font-hind">
+<body id="app" class="font-hind">
     <div class="font-hind">
-        <x-navbar auth="mahasiswa"></x-navbar>
+        <x-navbar></x-navbar>
         <div class="relative w-screen h-[36em] overflow-hidden">
             <div class="absolute inset-0 bg-black bg-opacity-30"></div>
             <header class="absolute top-[30%] w-fit h-fit left-[22%] text-[3em] font-semibold text-light-primary tracking-[0.3em]">PROGRAM KERJA UDAYANA</header>

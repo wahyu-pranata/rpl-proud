@@ -273,7 +273,7 @@ class EventController extends Controller
                  *
                  * */
 
-                return 201;
+                return back();
 
             } catch ( QueryException $queryException) {
                 dd($queryException->getMessage());

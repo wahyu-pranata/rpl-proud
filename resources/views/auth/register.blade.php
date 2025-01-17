@@ -10,7 +10,7 @@
     @vite('resources/css/signup.css')
     <title>Signup</title>
 </head>
-<body class="overflow-x-hidden">
+<body id="app" class="overflow-x-hidden">
     <x-navbar></x-navbar>
     <form method="POST" action="{{ route('register') }}" class="form" enctype="multipart/form-data">
         <div class="signup-box">

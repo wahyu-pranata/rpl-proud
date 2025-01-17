@@ -2,7 +2,7 @@
 {{-- <x-upload-file id='(id)'>(Label)</x-upload-file>
 !!!NEED TO IMPORT EXT CSS FILE FOR STYLES!!! --}}
 
-@props(['id', 'name'])
+@props(['id', 'name', 'required' => 'true'])
 <div class="input-box group max-w-fit">
     <label class="file-label my-[0.5em]" for="{{ $id }}">{{$slot}}</label>
     <button type="button" class="upload-button group-hover:bg-light-blue text-ellipsis max-w-full w-fit h-[3.2em] border-solid border-light-blue border-2 flex items-center justify-between rounded-lg px-[1em] text-light-blue space-x-2 mb-3 mt-2 active:border-transparent">
@@ -13,5 +13,9 @@
         </svg>
         <label class="file-name group-hover:text-light-primary" for="{{ $id }}">Upload File</label>
     </button>
-    <input id="{{ $id }}" name="{{ $name }}" class="file-input hidden" required type="file">
+    @if ($required == 'true')
+    <input id="{{ $id }}" name="{{ $name }}" required class="file-input hidden" type="file">
+    @else
+    <input id="{{ $id }}" name="{{ $name }}" class="file-input hidden" type="file">
+    @endif
 </div>

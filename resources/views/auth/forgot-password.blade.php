@@ -7,7 +7,7 @@
     @vite('resources/css/forgot.css')
     <title>Forgot Password</title>
 </head>
-<body>
+<body id="app">
     <x-navbar></x-navbar>
     <div class="form">
         <div class="forgot-box">
