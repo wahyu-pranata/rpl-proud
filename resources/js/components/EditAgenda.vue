@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-3xl space-y-6 my-6">
         <!-- Tombol Tambah Agenda -->
-        <button type="button" ref="addAgendaButton" @click="agendaList.push(1)" class="flex items-center space-x-2 text-black hover:text-blue-700">
+        <button type="button" ref="addAgendaButton" @click="agendaList.push({name: '', date: ''})" class="flex items-center space-x-2 text-black hover:text-blue-700">
             <div
                 class="flex items-center justify-center w-10 h-10 text-blue-600 bg-white border-2 rounded-lg border-gray-600 hover:bg-blue-100">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="black"
@@ -16,11 +16,11 @@
             <!-- Contoh Template Agenda -->
             <div class="bg-blue-100 p-4 rounded-lg flex items-center space-x-4" v-for="(agenda, index) in agendaList">
                 <!-- Nama Agenda -->
-                <input required type="text" name="agenda_names[]" placeholder="Nama Agenda"
+                <input ref="inputAgendaName" required type="text" name="agenda_names[]" placeholder="Nama Agenda" v-model="agenda.name"
                     class="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 <!-- Waktu Agenda -->
-                <div class="relative flex-1">
-                    <input required type="text" id="endDate" name="agenda_dates[]"
+                <div ref="inputAgendaDate" class="relative flex-1">
+                    <input required type="date" id="endDate" name="agenda_dates[]" v-model="agenda.date"
                         class="date-placeholder w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Waktu Agenda"
                         onfocus="(this.type='date'); this.classList.remove('date-placeholder');"
@@ -39,6 +39,17 @@
 <script setup>
 import { ref } from 'vue'
 
-const agendaList = ref([1])
+const props = defineProps(['timelines'])
+
+const agendaList = ref([])
+
+if (props.timelines) {
+    for (const timeline of props.timelines) {
+        timeline.date = timeline.date.split('T')[0]
+        agendaList.value.push(timeline)
+    }
+}
+
+console.log(props.timelines)
 
 </script>

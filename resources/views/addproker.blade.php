@@ -99,11 +99,11 @@
       {{-- Agenda (Vue) --}}
       <edit-agenda></edit-agenda>
 
-      <!--Desain Poster-->
-      <x-upload-file name="image_link" id='inputImageLink'>Desain Poster</x-upload-file>
+      <!--Image Link-->
+      <x-upload-file name="image_link" id='inputImageLink'>Logo Panitia</x-upload-file>
 
       <!--File Jobdesk-->
-      <x-upload-file name="job_description" id='inputJobDesc'>File Jobdesk</x-upload-file>
+      <x-upload-file name="job_description" id='inputJobDesc'>File Jobdesc</x-upload-file>
 
 
       <!-- Tombol Unggah -->

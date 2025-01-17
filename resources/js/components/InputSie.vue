@@ -16,9 +16,9 @@
         <div v-for="(sie, index) in sieArr"
             class="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg bg-white shadow-sm">
             <span>{{ sie }}</span>
-            <button type="button" class="w-5 h-5 flex items-center justify-center rounded-full bg-red-600 text-white text-sm font-bold hover:bg-red-700"
-            @click="sieArr.splice(index, 1)"
-            >
+            <button type="button"
+                class="w-5 h-5 flex items-center justify-center rounded-full bg-red-600 text-white text-sm font-bold hover:bg-red-700"
+                @click="sieArr.splice(index, 1)">
                 -
             </button>
         </div>
@@ -27,8 +27,17 @@
 
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const sieArr = ref([]);
+const props = defineProps(['divisions'])
+
+const sieArr = ref([])
+
+if (props.divisions) {
+    for (const division of props.divisions) {
+        sieArr.value.push(division.name)
+    }
+}
+
 
 </script>
