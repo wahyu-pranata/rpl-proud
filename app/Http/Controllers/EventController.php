@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\EventDivision;
 use App\Models\EventTimeline;
 use App\Models\EventUser;
+use App\Models\Invitation;
 use App\Models\Role;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -142,8 +143,9 @@ class EventController extends Controller
     public function edit( Request $request, string $id)
     {
         $eventModel = Event::where('id', '=', $id)->first('*');
-        $eventTimelineModels  = $eventModel->timelines()->get('*');
-        $eventDivisionModels  = $eventModel->divisions()->where('name', '!=', 'Organisasi')->where('name', '!=', 'Inti')->get('*');
+        $eventTimelineModels  = $eventModel->timelines()->get();
+        $eventDivisionModels  = $eventModel->divisions()->get();
+        $invitations = Invitation::with(['role', 'user.studentDetails', 'eventDivision'])->where('event_id', '=', $eventModel->id)->get();
 
         return view('editproker', [
             'eventId' => $eventModel->id,
@@ -156,6 +158,7 @@ class EventController extends Controller
             'eventJobDescription' => $eventModel->job_description,
             'eventTimelines' => $eventTimelineModels,
             'eventDivisions' => $eventDivisionModels,
+            'eventInvitations' => $invitations,
         ]);
     }
 

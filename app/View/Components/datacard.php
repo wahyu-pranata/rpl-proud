@@ -24,6 +24,6 @@ class datacard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.data-card');
+        return view('components.datacard');
     }
 }

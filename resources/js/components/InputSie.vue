@@ -13,7 +13,7 @@
     </div>
     <div id="sieList" class="flex flex-wrap gap-3 mb-4">
         <!-- Chips will be added dynamically here -->
-        <div v-for="(sie, index) in sieArr"
+        <div v-for="(sie, index) in sieArr" v-show="sie != 'Inti' && sie != 'Organisasi'"
             class="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg bg-white shadow-sm">
             <span>{{ sie }}</span>
             <button type="button"

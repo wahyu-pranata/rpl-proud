@@ -3,7 +3,7 @@
     <dialog ref="broadcastRef" id="broadcast" class="z-[9999] fixed font-hind top-0  h-screen w-screen justify-center items-center bg-black bg-opacity-30">
         <form ref="broadcastForm" id="broadcastForm" method="POST" enctype="multipart/form-data" class="space-y-2">
             <div class="flex bg-dark-blue justify-between items-center px-4 w-[50em] h-[2em] rounded-lg border-2 border-solid border-dark-secondary">
-                <span class="text-light-primary">New Broadcast</span>
+                <span class="text-light-primary">New Invitation untuk Posisi Koordinator {{ division.name }}</span>
                 <button type="button" @click="$refs.broadcastRef.classList.remove('flex')" id="close-button">
                     <svg class="stroke-red-500" width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M21.9292 22.0713L7.78706 7.92915" stroke-width="4" stroke-linecap="round"/>
@@ -14,7 +14,7 @@
             <div class="w-[50em] bg-white border-2 border-dark-primary p-6 rounded-xl">
                 <div class="w-full">
                     <div class="input-box relative">
-                        <input required type="text" id="subjekBroadcast" name="title"
+                        <input required type="text" id="subjekBroadcast" name="title" :value="`Undangan menjadi Koordinator (${division.name}) dalam ${eventName}`"
                             class="block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border-2 border-gray-500 hover:border-black appearance-none dark:border-gray-500 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" " />
                         <label for="subjekBroadcast"
@@ -24,14 +24,25 @@
                     </div>
                 </div>
                 <div class="input-box relative mt-4">
-                    <textarea id="bodyBroadcast" name="body" rows="10"
+                    <textarea id="bodyBroadcast" name="body" rows="10" :value="eventDescription"
                     class="block px-2.5 pb-2.5 pt-4 w-full resize-none text-sm rounded-lg border-2 border-gray-500 hover:border-black appearance-none dark:border-gray-500 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "></textarea>
                     <label for="bodyBroadcast"
-                    class="absolute text-sm text-gray-500 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-5 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Deskripsi
-                    Kegiatan</label>
+                    class="absolute text-sm text-gray-500 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-5 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                    Deskripsi Kegiatan</label>
                 </div>
-                <div class="flex flex-col mt-4">
+                <div class="w-full mt-4">
+                    <div class="input-box relative">
+                        <input required type="email" id="targetEmail" name="target_user_email"
+                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm rounded-lg border-2 border-gray-500 hover:border-black appearance-none dark:border-gray-500 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " />
+                        <label for="targetEmail"
+                            class="absolute text-sm text-gray-500 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                            Email Address
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-6">
                     <div class="input-box group max-w-fit" x-data="">
                         <label class="file-label my-[0.5em]" for="uploadInput">Attachments</label>
                         <div class="upload-button group-hover:bg-light-blue text-ellipsis max-w-full w-fit h-[3.2em] border-solid border-light-blue border-2 flex items-center justify-between rounded-lg px-[1em] text-light-blue space-x-2 mb-3 mt-2 active:border-transparent">
@@ -42,7 +53,7 @@
                             </svg>
                             <label class="file-name group-hover:text-light-primary" for="uploadInput">Upload File</label>
                         </div>
-                        <input ref="broadcastFileInput" id="uploadInput" @change="addFile($refs.broadcastFileInput)" class="file-input hidden" required type="file" accept=".pdf">
+                        <input ref="broadcastFileInput" id="uploadInput" @change="addFile($refs.broadcastFileInput)" class="file-input hidden" required type="file">
                     </div>
                     <div ref="fileListContainer" class="h-[10em] w-fit overflow-y-auto pr-2 space-y-2">
                         <p v-if="uploadedFiles.length === 0" class="text-gray-500">No files uploaded yet</p>
@@ -58,7 +69,7 @@
                 <div class="flex justify-end items-end">
                     <div class="mb-[10px]">
                         <div class="flex justify-center items-center my-[1em]">
-                            <button type='button' @click="storeBroadcast(submitRoute)" class="group shadow-none outline-none w-fit h-fit border-2 border-solid border-dark-blue py-[0.65em] px-[1em] rounded-lg text-light-primary text-base font-semibold hover:bg-dark-blue active:bg-transparent active:border-transparent active:text-dark-blue">
+                            <button type='button' @click="storeInvitation('/storeInvitation')" class="group shadow-none outline-none w-fit h-fit border-2 border-solid border-dark-blue py-[0.65em] px-[1em] rounded-lg text-light-primary text-base font-semibold hover:bg-dark-blue active:bg-transparent active:border-transparent active:text-dark-blue">
                                 <svg class="" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path class="group-hover:fill-white group-active:fill-dark-blue" d="M18.0401 0.823441C19.0561 0.468441 20.0321 1.44444 19.6771 2.46044L13.7521 19.3904C13.3671 20.4884 11.8371 20.5504 11.3651 19.4874L8.5061 13.0554L12.5301 9.03044C12.6626 8.88827 12.7347 8.70022 12.7313 8.50592C12.7278 8.31162 12.6491 8.12623 12.5117 7.98882C12.3743 7.85141 12.1889 7.77269 11.9946 7.76927C11.8003 7.76584 11.6123 7.83796 11.4701 7.97044L7.4451 11.9944L1.0131 9.13544C-0.0499011 8.66244 0.0130987 7.13344 1.1101 6.74844L18.0401 0.823441Z" fill="#2D4970"/>
                                 </svg>
@@ -77,9 +88,10 @@
 </template>
 
 <script setup>
-import { ref, useTemplateRef } from 'vue';
+import { ref } from 'vue';
+import axios from 'axios';
 
-    const props = defineProps(["csrfToken", "submitRoute", "openButtonClass"])
+    const props = defineProps(["openButtonClass", "division", "eventName", "eventId", "eventDescription", "roleName"])
 
     let uploadedFiles = ref([]); // Store files here
     const broadcastForm = ref('broadcastForm')
@@ -97,22 +109,22 @@ import { ref, useTemplateRef } from 'vue';
         uploadedFiles.value.splice(fileId, 1)
     }
 
-    const storeBroadcast = async (route) => {
+    const storeInvitation = async (route) => {
         const formData = new FormData(broadcastForm.value)
 
         for (const file of uploadedFiles.value) {
             formData.append("attachments[]", file, file.name)
         }
+        formData.append('event_division_id', props.division.id)
+        formData.append('event_id', props.eventId)
+        formData.append('role_name', props.roleName)
 
-        const request = new Request(route, {
-            method: "POST",
-            body: formData,
-            headers: {
-                'X-CSRF-TOKEN': props.csrfToken, // CSRF token for security
-            },
-        });
+        await axios({
+            method: 'post',
+            url: '/storeInvitation',
+            data: formData,
+        })
 
-        const response = await fetch(request);
     };
 
 </script>

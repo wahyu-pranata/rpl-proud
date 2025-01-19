@@ -76,6 +76,10 @@ Route::post('/storeBroadcast', [MessageController::class, 'storeBroadCast'])
 ->middleware(['auth', 'verified', EnsureUserType::class.':organization'])
 ->name('message.storeBroadcast');
 
+Route::post('/storeInvitation', [MessageController::class, 'storeInvitation'])
+->middleware(['auth', 'verified'])
+->name('message.storeInvitation');
+
 Route::post('/storeEvent', [EventController::class, 'store'])
 ->middleware(['auth', 'verified', EnsureUserType::class.':organization'])
 ->name('event.storeEvent');

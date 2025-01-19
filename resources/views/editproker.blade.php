@@ -11,10 +11,10 @@
 <body id="app" class="font-hind pt-36">
   <x-navbar></x-navbar>
   <header>
-    <div class="flex justify-center">
+    <div class="flex flex-col items-center justify-center">
       <h1 class="font-bold text-4xl tracking-widest">MENGEDIT KEPANITIAAN</h1>
-      {{ nl2br(e("\n")) }}
-      <p class="font-bold text-4xl tracking-widest">{{ $eventName }}</p>
+      <br />
+      <p class="font-bold text-4xl tracking-widest mt-5">{{ $eventName }}</p>
     </div>
   </header>
   <div class="mx-60 my-20">
@@ -104,19 +104,19 @@
 
       <!--Logo Panitia-->
       <div>
-          <x-upload-file required="false" name="image_link" id='inputImageLink'>
-            Logo Panitia (
-                <a href="{{ route('event.getLogo', ['id' => $eventId])}}" class="text-gray-500">Current Logo</a>
-            )
+        <x-upload-file required="false" name="image_link" id='inputImageLink'>
+          Logo Panitia (
+          <a href="{{ route('event.getLogo', ['id' => $eventId]) }}" class="text-gray-500">Current Logo</a>
+          )
         </x-upload-file>
       </div>
 
       <!--File Jobdesk-->
       <div class="mt-4 mb-8">
-          <x-upload-file required="false" name="job_description" id='inputJobDesc'>
-            File Jobdesc (
-                <a href="{{ route('event.getJobdesc', ['id' => $eventId])}}" class="text-gray-500">Current Jobdesc</a>
-            )
+        <x-upload-file required="false" name="job_description" id='inputJobDesc'>
+          File Jobdesc (
+          <a href="{{ route('event.getJobdesc', ['id' => $eventId]) }}" class="text-gray-500">Current Jobdesc</a>
+          )
         </x-upload-file>
       </div>
 
@@ -125,19 +125,14 @@
         <input type="submit" value="Update"
           class="bg-blue-900 text-white font-semibold py-2 px-6 rounded-lg cursor-pointer hover:bg-blue-700" />
       </div>
-
-      <h1 class="font-semibold text-4xl mb-2 tracking-widest">Undangan</h1>
-      <div class="flex flex-row">
-        <div class="w-1/2 mr-12">
-          <h2 class="font-semibold text-gray-600 text-2xl my-4 tracking-widest">Inti</h2>
-          <x-invitation-list />
-        </div>
-        <div class="w-1/2">
-          <h2 class="font-semibold text-gray-600 text-2xl my-4 tracking-widest">Koordinator</h2>
-          <div id="CoordList" class="mb-4 w-1/2"></div>
-        </div>
-      </div>
     </form>
+
+    <undangan v-bind:event-id="{{ Js::from($eventId) }}"
+      v-bind:event-name="{{ Js::from($eventName) }}"
+      v-bind:event-description="{{ Js::from($eventDescription) }}"
+      v-bind:event-divisions="{{ Js::from($eventDivisions) }}"
+      v-bind:invitations="{{ Js::from($eventInvitations) }}" />
+
   </div>
   @stack('scripts')
 </body>

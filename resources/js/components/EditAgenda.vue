@@ -50,6 +50,4 @@ if (props.timelines) {
     }
 }
 
-console.log(props.timelines)
-
 </script>

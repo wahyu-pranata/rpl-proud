@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('invitations', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['diterima', 'ditolak']);
+            $table->enum('status', ['diterima', 'ditolak', 'pending']);
             $table->timestamps();
         });
     }
