@@ -7,6 +7,12 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { createApp } from 'vue';
+import Broadcast from './components/Broadcast.vue';
+import InputSie from './components/InputSie.vue';
+import EditAgenda from './components/EditAgenda.vue';
+import Undangan from './components/Undangan.vue';
+import CreateInvitation from './components/CreateInvitation.vue';
 
 
 window.Alpine = Alpine;
@@ -22,3 +28,11 @@ var swiper = new Swiper(".mySwiper", {
     },
     slidesOffsetBefore: 40, // Tambahkan offset di awal
 });
+
+createApp({})
+    .component('InputSie', InputSie)
+    .component('EditAgenda', EditAgenda)
+    .component('Undangan', Undangan)
+    .component('Broadcast', Broadcast)
+    .component('CreateInvitation', CreateInvitation)
+    .mount('#app')

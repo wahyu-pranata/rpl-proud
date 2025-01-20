@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Middleware\EnsureUserType;
@@ -54,11 +56,9 @@ Route::get('/event/candidates', function () {
 
 Route::get('/addproker', function () {
     return view('addproker');
-})->name('Tambah Proker');
+})->name('event.index');
 
-Route::get('/editproker', function () {
-    return view('editproker');
-})->name('Edit Proker');
+Route::get('/editproker/{id}', [EventController::class, 'edit'])->name('event.edit');
 
 Route::get('/openrecruitment', function () {
     return view('openrecruitment');
@@ -68,12 +68,30 @@ Route::get('/editrecruitment', function () {
     return view('editrecruitment');
 })->name('Edit Rekrutmen');
 
-Route::get('/editrecuitment', function () {
-    return view('editrecruitment');
-});
-
 Route::get('/kepanitiaan', function () {
     return view('proker.index');
 });
+
+Route::post('/storeBroadcast', [MessageController::class, 'storeBroadCast'])
+->middleware(['auth', 'verified', EnsureUserType::class.':organization'])
+->name('message.storeBroadcast');
+
+Route::post('/storeInvitation', [MessageController::class, 'storeInvitation'])
+->middleware(['auth', 'verified'])
+->name('message.storeInvitation');
+
+Route::post('/storeEvent', [EventController::class, 'store'])
+->middleware(['auth', 'verified', EnsureUserType::class.':organization'])
+->name('event.storeEvent');
+
+Route::patch('/updateEvent/{id}', [EventController::class, 'update'])
+->middleware(['auth', 'verified', EnsureUserType::class.':organization'])
+->name('event.updateEvent');
+
+Route::get('/getEventLogo/{id}', [EventController::class, 'getLogo'])
+->name('event.getLogo');
+
+Route::get('/getEventJobdesc/{id}', [EventController::class, 'getJobdesc'])
+->name('event.getJobdesc');
 
 require __DIR__ . '/auth.php';

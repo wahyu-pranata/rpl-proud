@@ -6,8 +6,9 @@
     <title>Email View</title>
     <script src="https://cdn.tailwindcss.com"></script>
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
 </head>
-<body class="bg-white box-border h-screen">
+<body id="app" class="bg-white box-border h-screen">
     <!-- Full Page Container -->
     <div class="flex flex-col h-full">
 
@@ -45,7 +46,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35"></path>
                     </svg>
                 </div>
-        
+
                 <!-- Checkbox (same height as the input field) -->
                 <label class="inline-flex items-center cursor-pointer">
                     <input type="checkbox" class="hidden peer" />
@@ -55,7 +56,7 @@
                         </svg>
                     </div>
                 </label>
-        
+
                 <!-- Additional Icon -->
                 <button class="h-6 w-6 items-center">
                     <svg width="23" height="23" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -136,5 +137,6 @@
             </div>
         </div>
     </div>
+@stack('scripts')
 </body>
 </html>

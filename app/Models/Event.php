@@ -11,6 +11,13 @@ class Event extends Model
 {
     protected $guarded = ['id'];
 
+    protected function casts() {
+        return [
+            'start_date' => 'date',
+            'end_date' => 'date'
+        ];
+    }
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(Message::class, EventUser::class)->withPivot('status');
