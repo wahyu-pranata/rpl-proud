@@ -18,7 +18,7 @@
 3. Copy .env.example file to .env (create it first)
 4. Change the `DB_CONNECTION` value in .env to mysql
 5. Uncomment `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` and change its value to your own database configuration.
-6. Uncomment `MAIL_MAILER`, `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_ENCRYPTION`, `MAIL_FROM_ADDRESS`, `MAIL_FROM_NAME` and change its value to your own mail configuration [Read the Docs](https://laravel.com/docs/11.x/mail)
+6. Uncomment `MAIL_MAILER`, `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_ENCRYPTION`, `MAIL_FROM_ADDRESS`, `MAIL_FROM_NAME` and change its value to your own mail configuration. [Read Docs](https://laravel.com/docs/11.x/mail)
 7. Generate application key
 
     `php artisan key generate`
