@@ -31,7 +31,7 @@
     ```bash
    php artisan migrate
 
-11. Seed the database
+11. Seed the database. All users in the database are seeded with a default password of "password".
 
     ```bash
     php artisan db:seed
