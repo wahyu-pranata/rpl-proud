@@ -21,7 +21,7 @@
 6. Uncomment `MAIL_MAILER`, `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_ENCRYPTION`, `MAIL_FROM_ADDRESS`, `MAIL_FROM_NAME` and change its value to your own mail configuration. [Read Docs](https://laravel.com/docs/11.x/mail)
 7. Generate application key
 
-    `php artisan key generate`
+    `php artisan key:generate`
    
 8. Run the migration
 
