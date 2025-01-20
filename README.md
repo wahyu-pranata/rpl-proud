@@ -1,4 +1,29 @@
-# Project Guide
+<div align="center">
+
+## PROUD: Program Kerja Udayana
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![WTFPL License][license-shield]][license-url]
+
+</div>
+
+<!-- PROJECT LOGO -->
+</br>
+<div align="center">
+  <a href="https://www.unud.ac.id/">
+    <img src="https://github.com/dash4k/tugas-akhir-alpro-1/assets/133938416/ff71757a-1b51-44b7-b14e-b53b061d9815" alt="Logo" width="230" height="259">
+  </a>
+
+  <h3 align="center">Final Project: Rekayasa Perangkat Lunak</h3>
+
+  <p align="center">
+    Aplikasi berbasis web sebagai pusat sentralisasi program kerja</br>
+    di lingkungan Universitas Udayana.
+  </p>
+</div>
+</br>
+
 ## Requirement
 1. XAMPP or Laragon
 2. Make sure the mysql and apache server is turned on
@@ -42,3 +67,10 @@
     composer run dev
    
 15. Open the project at `http:127.0.0.1:8000`
+
+[contributors-shield]: https://img.shields.io/github/contributors/wahyu-pranata/rpl-proud?style=flat-square&color=%23ADD8E6
+[contributors-url]: https://github.com/wahyu-pranata/rpl-proud/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/wahyu-pranata/rpl-proud?style=flat-square&color=%23ADD8E6
+[forks-url]: https://github.com/wahyu-pranata/rpl-proud/forks
+[license-shield]: https://img.shields.io/github/license/wahyu-pranata/rpl-proud?style=flat-square&color=%23ADD8E6
+[license-url]: https://github.com/wahyu-pranata/rpl-proud/blob/main/LICENSE
