@@ -11,7 +11,7 @@
   <title>Login</title>
 </head>
 
-<body>
+<body id="app">
   <x-navbar></x-navbar>
   <x-auth-session-status class="mb-4" :status="session('status')" />
 

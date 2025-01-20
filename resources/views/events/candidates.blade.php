@@ -10,7 +10,7 @@
   <title>Event - Candidates</title>
 </head>
 
-<body>
+<body id="app">
   <x-navbar auth="admin"></x-navbar>
   <main class="p-8 pt-24">
     <h2 class="font-bold text-2xl">Responden</h2>

@@ -10,13 +10,15 @@ class table extends Component
 {
     public $headers;
     public $rows;
+    public $tableID;
     /**
      * Create a new component instance.
      */
-    public function __construct($headers = [], $rows = [])
+    public function __construct($headers = [], $rows = [], $tableID = '')
     {
         $this->headers = $headers;
         $this->rows = $rows;
+        $this->tableID = $tableID;
     }
 
     /**

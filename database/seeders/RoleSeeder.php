@@ -16,8 +16,11 @@ class RoleSeeder extends Seeder
         Role::upsert([
             ['name' => 'super_admin'],
             ['name' => 'organisasi'], // buat organisasi yg bikin acara
-            ['name' => 'panitia_ketua'],
             ['name' => 'panitia_inti'],
+            ['name' => 'panitia_ketua'],
+            ['name' => 'panitia_wakil_ketua'],
+            ['name' => 'panitia_bendahara'],
+            ['name' => 'panitia_sekretaris'],
             ['name' => 'panitia_koordinator_divisi'],
             ['name' => 'panitia_anggota_divisi'],
         ],

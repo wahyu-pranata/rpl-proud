@@ -7,19 +7,15 @@
 
   <title>PROUD</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.bunny.net">
-  <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
   <!-- Styles / Scripts -->
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
   @vite('resources/js/dropdown.js')
 </head>
 
-<body>
+<body id="app">
   <div class="font-hind ">
-    <x-navbar auth='admin'></x-navbar>
+    <x-navbar></x-navbar>
     <div class="relative w-screen h-[36em] overflow-hidden">
       <div class="absolute inset-0 bg-black bg-opacity-30"></div>
       <div class="absolute h-[60%] w-1 bg-light-primary left-[6em]"></div>
@@ -73,6 +69,7 @@
         kontribusi kalian!</p>
     </div>
     @php
+      $auth = 'mahasiswa';
       $filters = ['Universitas', 'Fakultas', 'Program Studi'];
       $proker = [
           'proker 1' => '',
@@ -88,7 +85,7 @@
     <div class="mx-10 w-fit">
       @auth
         @if (auth()->user()->type == 'organization')
-          <a href="{{ route('events.create') }}">
+          <a href="/addproker">
             <x-primary-button>Tambah</x-primary-button>
           </a>
         @elseif (auth()->user()->type == 'student')
@@ -107,24 +104,22 @@
         </a>
       @endguest
     </div>
-    @auth
-      @if (auth()->user()->type == 'admin' or auth()->user()->type == 'mahasiswa')
-        <div class="mySwiper">
-          <div class="swiper-wrapper">
-            @foreach ($proker as $namaProker => $poster)
-              <a class="swiper-slide" href="">
-                <div class="flex flex-col mb-2">
-                  <span class="text-xl w-4/5 overflow-ellipsis">{{ $namaProker }}</span>
-                  <span class="text-sm text-dark-primary">Waktu Proker</span>
-                </div>
-                <img src="" class="h-[24em] w-[-16em] bg-slate-300 rounded-xl" />
-              </a>
-            @endforeach
-          </div class="swiper-pagination">
-        </div>
-    </div>
-    @endif
-  @endauth
+    @if ($auth == 'admin' or $auth == 'mahasiswa')
+      <div class="mySwiper">
+        <div class="swiper-wrapper">
+          @foreach ($proker as $namaProker => $poster)
+            <a class="swiper-slide" href="">
+              <div class="flex flex-col mb-2">
+                <span class="text-xl w-4/5 overflow-ellipsis">{{ $namaProker }}</span>
+                <span class="text-sm text-dark-primary">Waktu Proker</span>
+              </div>
+              <img src="" class="h-[24em] w-[-16em] bg-slate-300 rounded-xl" />
+            </a>
+          @endforeach
+        </div class="swiper-pagination">
+      </div>
+  </div>
+@else
   <div class="mySwiper">
     <div class="swiper-wrapper">
       @foreach ($proker as $namaProker => $poster)
@@ -137,6 +132,9 @@
         </a>
       @endforeach
     </div class="swiper-pagination">
+  </div>
+  </div>
+  @endif
   </div>
   <div id="wrong" class="overflow-hidden text-nowrap bg-dark-blue">
     <div

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class MessageAttachment extends Model
 {
     protected $guarded = ['id'];
+    protected $table = 'message_attachments';
 
     public function message(): BelongsTo
     {

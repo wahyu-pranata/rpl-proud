@@ -1,4 +1,4 @@
-<div class="border-2 rounded-lg p-6 border-gray-400 {{ $isConfirmed ? 'border-blue-500' : '' }} mb-6">
+<div class="border-2 rounded-lg p-6 {{ $isConfirmed ? 'border-blue-500' : 'border-gray-400' }} mb-6">
     <div class="flex justify-between items-center">
         <div>
             <h3 class="font-bold text-gray-700">{{ $role }}</h3>

@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class EventTimeline extends Model
 {
     protected $guarded = ['id'];
+    protected function casts() {
+        return [
+            'date' => 'date',
+        ];
+    }
+
 
     public function event(): BelongsTo
     {

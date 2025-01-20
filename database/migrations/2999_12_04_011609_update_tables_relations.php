@@ -48,12 +48,13 @@ return new class extends Migration
         });
         Schema::table('messages', function (Blueprint $table) {
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('event_id')->references('id')->on('events')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('event_id')->nullable()->references('id')->on('events')->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('invitations', function (Blueprint $table) {
             $table->foreignId('target_user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('message_id')->references('id')->on('messages')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('event_division_id')->references('id')->on('event_divisions')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('event_id')->references('id')->on('events')->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('event_timelines', function (Blueprint $table) {
